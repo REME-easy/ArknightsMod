@@ -1,0 +1,129 @@
+{
+  "Arknights_ResummonPower": {
+    "NAME": "再部署间隔",
+    "DESCRIPTIONS": [
+      "在 #b"," 回合结束后，将 #b"," 洗入你的弃牌堆。"
+    ]
+  },
+  "Arknights_DelayedDetonationPower": {
+    "NAME": "延迟引爆",
+    "DESCRIPTIONS": [
+      "下一次攻击对所有敌人造成攻击力 #b3 倍的伤害，并给予 #b2 层 #y易伤 ，之后阵亡。"
+    ]
+  },
+  "Arknights_BurstModePower": {
+    "NAME": "扫射模式",
+    "DESCRIPTIONS": [
+      "你打出的下 #b"," 张攻击牌将额外打出 #b1 次。"
+    ]
+  },
+  "Arknights_RulesOfSurvivalPower": {
+    "NAME": "雪境生存法则",
+    "DESCRIPTIONS": [
+      "攻击间隔提高 #b1 ，受到伤害减少 #b30% ，回合结束时回复 #b3 点生命。"
+    ]
+  },
+  "Arknights_SolidnessPower": {
+    "NAME": "坚固",
+    "DESCRIPTIONS": [
+      "受到的攻击伤害降低 #b"," 点，但至少为 #b1 。",
+      "受到的攻击伤害提高 #b"," 点。"
+    ]
+  },
+  "Arknights_MidnightCounter": {
+    "NAME": "要害瞄准·初级",
+    "DESCRIPTIONS": [
+      "每攻击 #b3 次，获得 #b1 点 #y力量。 NL 已攻击 #b",
+      " 次。"
+    ]
+  },
+  "Arknights_AnselCounter": {
+    "NAME": "附加治疗",
+    "DESCRIPTIONS": [
+      "每治疗 #b3 次，额外治疗 #b1 次。 NL 已攻击 #b",
+      " 次。"
+    ]
+  },
+  "Arknights_KroosCounter": {
+    "NAME": "要害瞄准·初级",
+    "DESCRIPTIONS": [
+      "每攻击 #b3 次，第三次伤害提高 #b2 点。 NL 已攻击 #b",
+      " 次。"
+    ]
+  },
+  "Arknights_BombSlimePower": {
+    "NAME": "自爆",
+    "DESCRIPTIONS": [
+      "死亡时，将会造成 #b",
+      " 点伤害。"
+    ]
+  },
+  "Arknights_DefdrnPower": {
+    "NAME": "护盾立场",
+    "DESCRIPTIONS": [
+      "所有敌人都具有 #b",
+      " 层 #y坚固 。"
+    ]
+  },
+  "Arknights_MagicAttackPower": {
+    "NAME": "法术攻击",
+    "DESCRIPTIONS": [
+      "该单位是 #y荆棘 伤害。（不受大部分对攻击伤害的减益）"
+    ]
+  },
+  "Arknights_CrownsPower": {
+    "NAME": "弑君者",
+    "DESCRIPTIONS": [
+      "下回合 #y逃跑 。受到 #b",
+      " 伤害后打断。 NL 会进行特殊意图，攻击时偷取 #b1 金币。"
+    ]
+  },
+  "Arknights_SilencePower": {
+    "NAME": "沉默",
+    "DESCRIPTIONS": [
+      "本回合内所有正面效果无效。"
+    ]
+  },
+  "Arknights_LapplandPower": {
+    "NAME": "日晷",
+    "DESCRIPTIONS": [
+      "每回合受到的第一次攻击伤害变为1点。 NL 还可生效 #b",
+      " 次。"
+    ]
+  },
+  "Arknights_CamouflagePower": {
+    "NAME": "迷彩",
+    "DESCRIPTIONS": [
+      "在 #b",
+      " 回合内不会受到伤害。"
+    ]
+  },
+  "Arknights_FirmPower": {
+    "NAME": "坚定",
+    "DESCRIPTIONS": [
+      "受到的非攻击伤害减少 #b",
+      "受到的非攻击伤害提高 #b",
+      " 点。本回合结束时移除。"
+    ]
+  },
+  "Arknights_CantAttackPower": {
+    "NAME": "无法攻击",
+    "DESCRIPTIONS": [
+      "在 #b",
+      " 回合内无法积累行动点数，无法发动攻击。"
+    ]
+  },
+  "Arknights_BurningPower": {
+    "NAME": "灼烧",
+    "DESCRIPTIONS": [
+      "回合结束时受到 #b2 点 #y荆棘 伤害。持续 #b",
+      " 回合。再次获得该状态持续时间回到 #b5 回合。"
+    ]
+  },
+  "Arknights_SpecterPower": {
+    "NAME": "肉斩骨断",
+    "DESCRIPTIONS": [
+      "生命不会低于 #b1 。当你抽牌堆为空时，技能结束，且不能再抽牌。"
+    ]
+  }
+}

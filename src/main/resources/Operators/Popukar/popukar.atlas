@@ -1,0 +1,419 @@
+
+popukar.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+F_L_Braid
+  rotate: false
+  xy: 213, 66
+  size: 41, 75
+  orig: 41, 75
+  offset: 0, 0
+  index: -1
+F_Tape_B
+  rotate: false
+  xy: 127, 239
+  size: 11, 44
+  orig: 11, 44
+  offset: 0, 0
+  index: -1
+F_Tape_A
+  rotate: false
+  xy: 145, 205
+  size: 11, 52
+  orig: 11, 52
+  offset: 0, 0
+  index: -1
+F_L_Hand
+  rotate: false
+  xy: 25, 312
+  size: 23, 19
+  orig: 23, 19
+  offset: 0, 0
+  index: -1
+F_L_Finger
+  rotate: false
+  xy: 93, 273
+  size: 22, 22
+  orig: 22, 22
+  offset: 0, 0
+  index: -1
+F_L_Forearm
+  rotate: false
+  xy: 31, 245
+  size: 34, 30
+  orig: 34, 30
+  offset: 0, 0
+  index: -1
+F_L_Arm
+  rotate: false
+  xy: 158, 245
+  size: 22, 26
+  orig: 22, 26
+  offset: 0, 0
+  index: -1
+F_L_Braid_Tiny
+  rotate: false
+  xy: 196, 201
+  size: 24, 51
+  orig: 24, 51
+  offset: 0, 0
+  index: -1
+F_L_Hair
+  rotate: false
+  xy: 222, 201
+  size: 29, 41
+  orig: 29, 41
+  offset: 0, 0
+  index: -1
+F_Head
+  rotate: false
+  xy: 149, 66
+  size: 62, 62
+  orig: 62, 62
+  offset: 0, 0
+  index: -1
+F_WhiteOfEye
+  rotate: false
+  xy: 117, 285
+  size: 18, 12
+  orig: 18, 12
+  offset: 0, 0
+  index: -1
+F_EyeMask
+  rotate: false
+  xy: 72, 199
+  size: 40, 26
+  orig: 40, 26
+  offset: 0, 0
+  index: -1
+F_Hair_D
+  rotate: false
+  xy: 222, 244
+  size: 31, 38
+  orig: 31, 38
+  offset: 0, 0
+  index: -1
+F_Hair_C
+  rotate: false
+  xy: 235, 1
+  size: 17, 36
+  orig: 17, 36
+  offset: 0, 0
+  index: -1
+F_R_Hair
+  rotate: false
+  xy: 214, 143
+  size: 37, 56
+  orig: 37, 56
+  offset: 0, 0
+  index: -1
+F_R_Braid_Tiny_b
+  rotate: false
+  xy: 165, 273
+  size: 14, 23
+  orig: 14, 23
+  offset: 0, 0
+  index: -1
+F_Hair_B
+  rotate: false
+  xy: 1, 270
+  size: 25, 39
+  orig: 25, 39
+  offset: 0, 0
+  index: -1
+F_Hair_A
+  rotate: false
+  xy: 1, 311
+  size: 22, 40
+  orig: 22, 40
+  offset: 0, 0
+  index: -1
+F_Hat
+  rotate: false
+  xy: 149, 1
+  size: 84, 63
+  orig: 84, 63
+  offset: 0, 0
+  index: -1
+F_R_Braid
+  rotate: false
+  xy: 114, 130
+  size: 42, 73
+  orig: 42, 73
+  offset: 0, 0
+  index: -1
+F_Mouth_Laugh
+  rotate: false
+  xy: 204, 254
+  size: 11, 6
+  orig: 11, 6
+  offset: 0, 0
+  index: -1
+F_Mouth_Cry
+  rotate: false
+  xy: 140, 259
+  size: 11, 6
+  orig: 11, 6
+  offset: 0, 0
+  index: -1
+F_Mouth_Dizzy
+  rotate: false
+  xy: 101, 227
+  size: 11, 6
+  orig: 11, 6
+  offset: 0, 0
+  index: -1
+F_Mouth_Happy
+  rotate: false
+  xy: 201, 130
+  size: 10, 5
+  orig: 10, 5
+  offset: 0, 0
+  index: -1
+F_Mouth_Sad
+  rotate: false
+  xy: 201, 137
+  size: 7, 4
+  orig: 7, 4
+  offset: 0, 0
+  index: -1
+F_Mouth
+  rotate: false
+  xy: 93, 267
+  size: 5, 3
+  orig: 5, 3
+  offset: 0, 0
+  index: -1
+F_Mouth_Anger
+  rotate: false
+  xy: 182, 245
+  size: 11, 6
+  orig: 11, 6
+  offset: 0, 0
+  index: -1
+F_R_Braid_Tiny_a
+  rotate: false
+  xy: 31, 277
+  size: 30, 33
+  orig: 30, 33
+  offset: 0, 0
+  index: -1
+F_Eye_Dizzy
+  rotate: false
+  xy: 235, 39
+  size: 19, 18
+  orig: 19, 18
+  offset: 0, 0
+  index: -1
+F_Eye_Happy
+  rotate: false
+  xy: 25, 354
+  size: 23, 19
+  orig: 23, 19
+  offset: 0, 0
+  index: -1
+F_Eye
+  rotate: false
+  xy: 63, 294
+  size: 23, 19
+  orig: 23, 19
+  offset: 0, 0
+  index: -1
+F_Eye_Laugh
+  rotate: false
+  xy: 158, 130
+  size: 21, 9
+  orig: 21, 9
+  offset: 0, 0
+  index: -1
+F_Eye_Sad
+  rotate: false
+  xy: 140, 273
+  size: 23, 18
+  orig: 23, 18
+  offset: 0, 0
+  index: -1
+F_Eye_Anger
+  rotate: false
+  xy: 25, 333
+  size: 23, 19
+  orig: 23, 19
+  offset: 0, 0
+  index: -1
+F_Eye_Cry
+  rotate: false
+  xy: 1, 353
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+F_Eyebrow_Laugh
+  rotate: false
+  xy: 181, 130
+  size: 18, 7
+  orig: 18, 7
+  offset: 0, 0
+  index: -1
+F_Eyebrow_Anger
+  rotate: false
+  xy: 182, 254
+  size: 20, 11
+  orig: 20, 11
+  offset: 0, 0
+  index: -1
+F_Eyebrow_Sad
+  rotate: false
+  xy: 196, 193
+  size: 16, 6
+  orig: 17, 6
+  offset: 1, 0
+  index: -1
+F_Eyebrow_Happy
+  rotate: false
+  xy: 137, 293
+  size: 18, 6
+  orig: 18, 6
+  offset: 0, 0
+  index: -1
+F_Eyebrow
+  rotate: false
+  xy: 235, 59
+  size: 18, 5
+  orig: 18, 5
+  offset: 0, 0
+  index: -1
+F_R_Calf
+  rotate: false
+  xy: 158, 193
+  size: 36, 50
+  orig: 36, 50
+  offset: 0, 0
+  index: -1
+F_R_Foot
+  rotate: false
+  xy: 216, 284
+  size: 32, 17
+  orig: 32, 17
+  offset: 0, 0
+  index: -1
+F_R_Leg
+  rotate: false
+  xy: 72, 227
+  size: 27, 38
+  orig: 27, 38
+  offset: 0, 0
+  index: -1
+F_L_Calf
+  rotate: false
+  xy: 114, 72
+  size: 32, 52
+  orig: 32, 52
+  offset: 0, 0
+  index: -1
+F_L_Foot
+  rotate: false
+  xy: 182, 268
+  size: 32, 17
+  orig: 32, 17
+  offset: 0, 0
+  index: -1
+F_L_Leg
+  rotate: false
+  xy: 1, 230
+  size: 28, 38
+  orig: 28, 38
+  offset: 0, 0
+  index: -1
+F_Hoot
+  rotate: false
+  xy: 114, 205
+  size: 29, 32
+  orig: 29, 32
+  offset: 0, 0
+  index: -1
+F_Waist
+  rotate: false
+  xy: 158, 143
+  size: 54, 48
+  orig: 54, 48
+  offset: 0, 0
+  index: -1
+F_Chest
+  rotate: false
+  xy: 1, 199
+  size: 38, 29
+  orig: 38, 29
+  offset: 0, 0
+  index: -1
+F_Bag
+  rotate: false
+  xy: 41, 199
+  size: 29, 37
+  orig: 29, 37
+  offset: 0, 0
+  index: -1
+F_BagTape
+  rotate: false
+  xy: 1, 160
+  size: 31, 37
+  orig: 31, 37
+  offset: 0, 0
+  index: -1
+C_Weapon_B
+  rotate: false
+  xy: 1, 135
+  size: 105, 23
+  orig: 105, 23
+  offset: 0, 0
+  index: -1
+C_Saw_Stop
+  rotate: false
+  xy: 1, 72
+  size: 110, 30
+  orig: 110, 30
+  offset: 0, 0
+  index: -1
+C_Saw_Activity
+  rotate: false
+  xy: 1, 104
+  size: 111, 29
+  orig: 111, 29
+  offset: 0, 0
+  index: -1
+C_Weapon_A
+  rotate: false
+  xy: 1, 1
+  size: 146, 69
+  orig: 146, 69
+  offset: 0, 0
+  index: -1
+F_R_hand
+  rotate: false
+  xy: 101, 239
+  size: 24, 27
+  orig: 24, 27
+  offset: 0, 0
+  index: -1
+F_R_Forearm
+  rotate: false
+  xy: 34, 160
+  size: 34, 33
+  orig: 34, 33
+  offset: 0, 0
+  index: -1
+F_R_Arm
+  rotate: false
+  xy: 67, 267
+  size: 24, 25
+  orig: 24, 25
+  offset: 0, 0
+  index: -1
+F_Doll
+  rotate: false
+  xy: 70, 160
+  size: 30, 37
+  orig: 30, 37
+  offset: 0, 0
+  index: -1

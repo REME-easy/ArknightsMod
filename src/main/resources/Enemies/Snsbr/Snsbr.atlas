@@ -1,0 +1,209 @@
+
+Snsbr.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Cloak
+  rotate: false
+  xy: 1, 1
+  size: 174, 106
+  orig: 174, 106
+  offset: 0, 0
+  index: -1
+L_Arm
+  rotate: false
+  xy: 1, 296
+  size: 26, 31
+  orig: 26, 31
+  offset: 0, 0
+  index: -1
+L_Forearm
+  rotate: false
+  xy: 163, 304
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+L_Hand
+  rotate: false
+  xy: 95, 226
+  size: 38, 34
+  orig: 38, 34
+  offset: 0, 0
+  index: -1
+Weapon
+  rotate: false
+  xy: 1, 109
+  size: 105, 57
+  orig: 106, 61
+  offset: 0, 1
+  index: -1
+L_Fingers
+  rotate: false
+  xy: 57, 267
+  size: 27, 26
+  orig: 27, 26
+  offset: 0, 0
+  index: -1
+L_Leg
+  rotate: false
+  xy: 129, 275
+  size: 32, 34
+  orig: 32, 35
+  offset: 0, 0
+  index: -1
+L_Calf
+  rotate: false
+  xy: 191, 173
+  size: 42, 56
+  orig: 43, 57
+  offset: 1, 0
+  index: -1
+L_Foot
+  rotate: false
+  xy: 185, 231
+  size: 44, 35
+  orig: 44, 35
+  offset: 0, 0
+  index: -1
+L_Kneecap
+  rotate: false
+  xy: 57, 295
+  size: 26, 24
+  orig: 27, 25
+  offset: 1, 0
+  index: -1
+R_Leg
+  rotate: false
+  xy: 34, 267
+  size: 21, 40
+  orig: 22, 40
+  offset: 0, 0
+  index: -1
+R_Calf
+  rotate: false
+  xy: 138, 223
+  size: 45, 50
+  orig: 45, 52
+  offset: 0, 1
+  index: -1
+R_Foot
+  rotate: false
+  xy: 56, 226
+  size: 37, 39
+  orig: 37, 39
+  offset: 0, 0
+  index: -1
+R_Kneecap
+  rotate: false
+  xy: 231, 231
+  size: 22, 23
+  orig: 26, 24
+  offset: 3, 1
+  index: -1
+Waist
+  rotate: false
+  xy: 177, 1
+  size: 74, 102
+  orig: 74, 102
+  offset: 0, 0
+  index: -1
+Vest
+  rotate: false
+  xy: 138, 173
+  size: 51, 48
+  orig: 51, 48
+  offset: 0, 0
+  index: -1
+Bag_C
+  rotate: false
+  xy: 235, 173
+  size: 17, 16
+  orig: 17, 16
+  offset: 0, 0
+  index: -1
+Bag_B
+  rotate: false
+  xy: 163, 275
+  size: 18, 19
+  orig: 18, 19
+  offset: 0, 0
+  index: -1
+Bag_A
+  rotate: false
+  xy: 56, 209
+  size: 16, 14
+  orig: 16, 14
+  offset: 0, 0
+  index: -1
+R_Arm
+  rotate: false
+  xy: 1, 262
+  size: 31, 32
+  orig: 31, 32
+  offset: 0, 0
+  index: -1
+R_Forearm
+  rotate: false
+  xy: 196, 304
+  size: 25, 34
+  orig: 25, 34
+  offset: 0, 0
+  index: -1
+R_Hand
+  rotate: false
+  xy: 95, 262
+  size: 32, 35
+  orig: 32, 35
+  offset: 0, 0
+  index: -1
+Hood_B
+  rotate: false
+  xy: 108, 109
+  size: 60, 57
+  orig: 60, 57
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 86, 168
+  size: 50, 56
+  orig: 50, 56
+  offset: 0, 0
+  index: -1
+Hood_A
+  rotate: false
+  xy: 177, 105
+  size: 76, 66
+  orig: 76, 66
+  offset: 0, 0
+  index: -1
+L_Scarf
+  rotate: false
+  xy: 185, 268
+  size: 43, 34
+  orig: 43, 34
+  offset: 0, 0
+  index: -1
+R_Scarf
+  rotate: false
+  xy: 1, 209
+  size: 53, 51
+  orig: 53, 51
+  offset: 0, 0
+  index: -1
+Tape
+  rotate: false
+  xy: 230, 268
+  size: 16, 85
+  orig: 16, 85
+  offset: 0, 0
+  index: -1
+Scarf
+  rotate: false
+  xy: 1, 168
+  size: 83, 39
+  orig: 83, 39
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,10 @@
+{
+  "modid": "ArknightsMod",
+  "name": "Arknights（明日方舟）",
+  "author_list": ["REME"],
+  "description": " \n 模组的数值参考了prts.wiki。 \n 本游戏模组基于手机游戏《明日方舟》制作，模组中使用的干员和敌人的模型、立绘、特效等都来自于《明日方舟》，其版权属于上海鹰角网络科技有限公司。",
+  "version": "0.1",
+  "sts_version": "07-30-2020",
+  "mts_version": "3.16.0",
+  "dependencies": ["basemod"]
+}

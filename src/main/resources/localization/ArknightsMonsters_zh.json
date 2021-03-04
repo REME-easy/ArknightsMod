@@ -1,0 +1,78 @@
+{
+  "Arknights_Patrt":{
+    "NAME":"爱国者",
+    "DIALOG": [""]
+  },
+  "Arknights_Sotisd":{
+    "NAME":"游击队盾卫",
+    "DIALOG": [""]
+  },
+  "Arknights_Litamr":{
+    "NAME":"轻甲卫兵",
+    "DIALOG": [""]
+  },
+  "Arknights_Slime_2":{
+    "NAME":"源石虫",
+    "DIALOG": [""]
+  },
+  "Arknights_BombSlime_2":{
+    "NAME":"高能源石虫",
+    "DIALOG": [""]
+  },
+  "Arknights_Lunmag_2":{
+    "NAME":"特战术师",
+    "DIALOG": [""]
+  },
+  "Arknights_Mortar_2":{
+    "NAME":"炮击组长",
+    "DIALOG": [
+      "迫击炮",
+      "该敌人优先攻击最后方的干员。"
+    ]
+  },
+  "Arknights_Aoemag_2":{
+    "NAME":"高阶术师",
+    "DIALOG": [
+      "群体攻击",
+      "该敌人攻击所有友方。"
+    ]
+  },
+  "Arknights_Defdrn":{
+    "NAME":"御4",
+    "DIALOG": [""]
+  },
+  "Arknights_Crowns":{
+    "NAME":"弑君者",
+    "DIALOG": [""]
+  },
+  "Arknights_Mslime":{
+    "NAME":"酸液源石虫",
+    "DIALOG": [""]
+  },
+  "Arknights_Lslime":{
+    "NAME":"“庞贝”",
+    "DIALOG": [
+      "群体攻击",
+      "该敌人攻击所有友方。"
+    ]
+  },
+  "Arknights_Snbow":{
+    "NAME":"雪怪狙击手",
+    "DIALOG": [""]
+  },
+  "Arknights_Snsbr":{
+    "NAME":"雪怪小队",
+    "DIALOG": [""]
+  },
+  "Arknights_Icebrk":{
+    "NAME":"雪怪小队破冰者",
+    "DIALOG": [
+      "破冰",
+      " #y力量 对该敌人的影响为 #b3 倍。"
+    ]
+  },
+  "Arknights_Frstar_1":{
+    "NAME":"霜星",
+    "DIALOG": [""]
+  }
+}

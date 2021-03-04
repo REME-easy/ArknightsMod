@@ -1,0 +1,97 @@
+
+therex.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+B_L_Tyre
+  rotate: false
+  xy: 1, 394
+  size: 54, 50
+  orig: 54, 50
+  offset: 0, 0
+  index: -1
+B_L_Tyre_2
+  rotate: false
+  xy: 202, 228
+  size: 53, 50
+  orig: 54, 50
+  offset: 0, 0
+  index: -1
+B_Barrel
+  rotate: false
+  xy: 226, 151
+  size: 28, 31
+  orig: 28, 31
+  offset: 0, 0
+  index: -1
+B_Floor
+  rotate: false
+  xy: 87, 151
+  size: 118, 75
+  orig: 118, 75
+  offset: 0, 0
+  index: -1
+B_Body
+  rotate: false
+  xy: 1, 1
+  size: 150, 92
+  orig: 150, 92
+  offset: 0, 0
+  index: -1
+B_R_Tyre
+  rotate: false
+  xy: 87, 95
+  size: 54, 50
+  orig: 54, 50
+  offset: 0, 0
+  index: -1
+B_R_Tyre_2
+  rotate: false
+  xy: 146, 228
+  size: 54, 50
+  orig: 54, 50
+  offset: 0, 0
+  index: -1
+B_Wire
+  rotate: false
+  xy: 207, 184
+  size: 30, 16
+  orig: 30, 16
+  offset: 0, 0
+  index: -1
+C_Bag_E
+  rotate: false
+  xy: 153, 1
+  size: 84, 148
+  orig: 84, 148
+  offset: 0, 0
+  index: -1
+C_Bag_D
+  rotate: false
+  xy: 1, 245
+  size: 57, 147
+  orig: 59, 147
+  offset: 2, 0
+  index: -1
+C_Bag_C
+  rotate: false
+  xy: 60, 377
+  size: 164, 44
+  orig: 164, 44
+  offset: 0, 0
+  index: -1
+C_Bag_B
+  rotate: false
+  xy: 87, 228
+  size: 57, 147
+  orig: 59, 147
+  offset: 0, 0
+  index: -1
+C_Bag_A
+  rotate: false
+  xy: 1, 95
+  size: 84, 148
+  orig: 84, 148
+  offset: 0, 0
+  index: -1

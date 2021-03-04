@@ -1,0 +1,293 @@
+
+hibisc.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+F_L_Hand
+  rotate: false
+  xy: 209, 75
+  size: 23, 21
+  orig: 23, 21
+  offset: 0, 0
+  index: -1
+C_Weapon
+  rotate: false
+  xy: 1, 1
+  size: 44, 174
+  orig: 44, 174
+  offset: 0, 0
+  index: -1
+F_L_Fingers
+  rotate: false
+  xy: 210, 98
+  size: 23, 21
+  orig: 23, 21
+  offset: 0, 0
+  index: -1
+F_L_Forearm
+  rotate: false
+  xy: 169, 160
+  size: 29, 28
+  orig: 29, 28
+  offset: 0, 0
+  index: -1
+F_L_Arm
+  rotate: false
+  xy: 176, 134
+  size: 22, 24
+  orig: 22, 24
+  offset: 0, 0
+  index: -1
+F_L_Calf
+  rotate: false
+  xy: 113, 124
+  size: 33, 53
+  orig: 33, 53
+  offset: 0, 0
+  index: -1
+F_L_Foot
+  rotate: false
+  xy: 176, 190
+  size: 33, 24
+  orig: 33, 24
+  offset: 0, 0
+  index: -1
+F_L_Leg
+  rotate: false
+  xy: 162, 72
+  size: 26, 34
+  orig: 26, 34
+  offset: 0, 0
+  index: -1
+F_R_Calf
+  rotate: false
+  xy: 87, 73
+  size: 38, 49
+  orig: 38, 49
+  offset: 0, 0
+  index: -1
+F_R_Foot
+  rotate: false
+  xy: 176, 108
+  size: 32, 24
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+F_R_Leg
+  rotate: false
+  xy: 148, 119
+  size: 26, 39
+  orig: 26, 39
+  offset: 0, 0
+  index: -1
+F_Hood_Back
+  rotate: false
+  xy: 140, 229
+  size: 47, 23
+  orig: 47, 23
+  offset: 0, 0
+  index: -1
+F_Coat_Back
+  rotate: false
+  xy: 162, 108
+  size: 11, 8
+  orig: 11, 8
+  offset: 0, 0
+  index: -1
+F_Waist
+  rotate: false
+  xy: 47, 1
+  size: 56, 70
+  orig: 56, 70
+  offset: 0, 0
+  index: -1
+F_Tie
+  rotate: false
+  xy: 227, 26
+  size: 12, 32
+  orig: 12, 32
+  offset: 0, 0
+  index: -1
+F_L_Coat
+  rotate: false
+  xy: 200, 134
+  size: 15, 46
+  orig: 15, 46
+  offset: 0, 0
+  index: -1
+F_R_Coat
+  rotate: false
+  xy: 138, 1
+  size: 29, 49
+  orig: 29, 49
+  offset: 0, 0
+  index: -1
+F_Bag
+  rotate: false
+  xy: 87, 207
+  size: 51, 44
+  orig: 51, 44
+  offset: 0, 0
+  index: -1
+F_L_Collar
+  rotate: false
+  xy: 190, 76
+  size: 16, 24
+  orig: 16, 24
+  offset: 0, 0
+  index: -1
+F_L_Ear
+  rotate: false
+  xy: 206, 1
+  size: 28, 23
+  orig: 28, 23
+  offset: 0, 0
+  index: -1
+F_L_Hair
+  rotate: false
+  xy: 105, 1
+  size: 31, 70
+  orig: 31, 70
+  offset: 0, 0
+  index: -1
+F_Back_Hair
+  rotate: false
+  xy: 74, 142
+  size: 37, 63
+  orig: 37, 63
+  offset: 0, 0
+  index: -1
+F_Head
+  rotate: false
+  xy: 1, 177
+  size: 71, 75
+  orig: 71, 76
+  offset: 0, 0
+  index: -1
+F_Eye_2
+  rotate: false
+  xy: 169, 27
+  size: 50, 13
+  orig: 50, 14
+  offset: 0, 1
+  index: -1
+F_Face
+  rotate: false
+  xy: 169, 1
+  size: 35, 24
+  orig: 46, 35
+  offset: 6, 3
+  index: -1
+F_Eye
+  rotate: false
+  xy: 138, 52
+  size: 50, 18
+  orig: 50, 18
+  offset: 0, 0
+  index: -1
+F_L_Horn
+  rotate: false
+  xy: 209, 42
+  size: 16, 31
+  orig: 16, 33
+  offset: 0, 0
+  index: -1
+F_Front_Hair_A
+  rotate: false
+  xy: 140, 179
+  size: 27, 48
+  orig: 27, 48
+  offset: 0, 0
+  index: -1
+F_Front_Hair_B
+  rotate: false
+  xy: 127, 73
+  size: 33, 44
+  orig: 33, 44
+  offset: 0, 0
+  index: -1
+F_R_Ear
+  rotate: false
+  xy: 229, 210
+  size: 26, 25
+  orig: 26, 25
+  offset: 0, 0
+  index: -1
+F_R_Hand
+  rotate: false
+  xy: 211, 182
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+F_R_Forearm
+  rotate: false
+  xy: 200, 216
+  size: 27, 29
+  orig: 27, 29
+  offset: 0, 0
+  index: -1
+F_R_Arm
+  rotate: false
+  xy: 113, 179
+  size: 23, 25
+  orig: 23, 25
+  offset: 0, 0
+  index: -1
+F_R_Collar
+  rotate: false
+  xy: 47, 142
+  size: 20, 29
+  orig: 20, 29
+  offset: 0, 0
+  index: -1
+F_R_Hair
+  rotate: false
+  xy: 47, 73
+  size: 38, 67
+  orig: 38, 67
+  offset: 0, 0
+  index: -1
+F_R_Horn
+  rotate: false
+  xy: 190, 42
+  size: 17, 32
+  orig: 17, 32
+  offset: 0, 0
+  index: -1
+F_Mouth
+  rotate: false
+  xy: 169, 42
+  size: 11, 6
+  orig: 11, 6
+  offset: 0, 0
+  index: -1
+F_Eyelash
+  rotate: false
+  xy: 229, 237
+  size: 50, 10
+  orig: 50, 10
+  offset: 0, 0
+  index: -1
+F_Eyelash_3
+  rotate: false
+  xy: 227, 60
+  size: 44, 7
+  orig: 44, 7
+  offset: 0, 0
+  index: -1
+F_Eyelash_2
+  rotate: false
+  xy: 210, 121
+  size: 50, 8
+  orig: 50, 8
+  offset: 0, 0
+  index: -1
+F_Eyebrow
+  rotate: false
+  xy: 189, 247
+  size: 30, 5
+  orig: 32, 5
+  offset: 1, 0
+  index: -1

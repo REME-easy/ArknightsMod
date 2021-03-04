@@ -1,0 +1,111 @@
+
+motter.png
+size: 128,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Tail
+  rotate: false
+  xy: 1, 71
+  size: 80, 37
+  orig: 80, 37
+  offset: 0, 0
+  index: -1
+B_L_Calf
+  rotate: false
+  xy: 83, 168
+  size: 14, 17
+  orig: 14, 17
+  offset: 0, 0
+  index: -1
+B_L_Leg
+  rotate: false
+  xy: 1, 152
+  size: 35, 42
+  orig: 35, 42
+  offset: 0, 0
+  index: -1
+B_L_Foot
+  rotate: false
+  xy: 49, 113
+  size: 37, 40
+  orig: 37, 40
+  offset: 0, 0
+  index: -1
+F_L_Foot
+  rotate: false
+  xy: 99, 168
+  size: 14, 11
+  orig: 14, 11
+  offset: 0, 0
+  index: -1
+F_L_Calf
+  rotate: false
+  xy: 92, 45
+  size: 20, 24
+  orig: 20, 24
+  offset: 0, 0
+  index: -1
+F_L_Leg
+  rotate: false
+  xy: 88, 113
+  size: 27, 53
+  orig: 27, 53
+  offset: 0, 0
+  index: -1
+Body
+  rotate: false
+  xy: 1, 1
+  size: 89, 68
+  orig: 89, 68
+  offset: 0, 0
+  index: -1
+B_R_Calf
+  rotate: false
+  xy: 67, 155
+  size: 14, 17
+  orig: 14, 17
+  offset: 0, 0
+  index: -1
+B_R_Leg
+  rotate: false
+  xy: 92, 1
+  size: 35, 42
+  orig: 35, 42
+  offset: 0, 0
+  index: -1
+B_R_Foot
+  rotate: false
+  xy: 83, 71
+  size: 37, 40
+  orig: 37, 40
+  offset: 0, 0
+  index: -1
+F_R_Foot
+  rotate: false
+  xy: 67, 174
+  size: 14, 11
+  orig: 14, 11
+  offset: 0, 0
+  index: -1
+F_R_Calf
+  rotate: false
+  xy: 1, 196
+  size: 20, 24
+  orig: 20, 24
+  offset: 0, 0
+  index: -1
+F_R_Leg
+  rotate: false
+  xy: 38, 155
+  size: 27, 53
+  orig: 27, 53
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 1, 110
+  size: 46, 40
+  orig: 46, 40
+  offset: 0, 0
+  index: -1

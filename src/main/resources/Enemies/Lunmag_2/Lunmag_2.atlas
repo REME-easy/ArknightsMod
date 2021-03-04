@@ -1,0 +1,174 @@
+
+Lunmag_2.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+C_R_Arm
+  rotate: false
+  xy: 77, 94
+  size: 16, 29
+  orig: 18, 29
+  offset: 0, 0
+  index: -1
+C_R_Forearm
+  rotate: false
+  xy: 233, 147
+  size: 21, 20
+  orig: 21, 20
+  offset: 0, 0
+  index: -1
+C_R_Hand
+  rotate: false
+  xy: 192, 176
+  size: 36, 28
+  orig: 36, 28
+  offset: 0, 0
+  index: -1
+C_R_Shield
+  rotate: false
+  xy: 1, 133
+  size: 69, 30
+  orig: 70, 30
+  offset: 0, 0
+  index: -1
+C_R_Calf
+  rotate: false
+  xy: 147, 114
+  size: 43, 44
+  orig: 44, 45
+  offset: 0, 1
+  index: -1
+C_R_Thigh
+  rotate: false
+  xy: 228, 1
+  size: 25, 31
+  orig: 25, 31
+  offset: 0, 0
+  index: -1
+C_R_Foot
+  rotate: false
+  xy: 135, 185
+  size: 33, 28
+  orig: 33, 28
+  offset: 0, 0
+  index: -1
+C_L_Calf
+  rotate: false
+  xy: 1, 165
+  size: 37, 48
+  orig: 37, 48
+  offset: 0, 0
+  index: -1
+C_L_Thigh
+  rotate: false
+  xy: 234, 106
+  size: 17, 36
+  orig: 17, 36
+  offset: 0, 0
+  index: -1
+C_L_Foot
+  rotate: false
+  xy: 170, 206
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+C_B_Skirt
+  rotate: false
+  xy: 216, 55
+  size: 31, 49
+  orig: 31, 49
+  offset: 0, 0
+  index: -1
+C_R_Skirt
+  rotate: false
+  xy: 95, 71
+  size: 50, 61
+  orig: 50, 61
+  offset: 0, 0
+  index: -1
+C_L_Skirt
+  rotate: false
+  xy: 95, 1
+  size: 57, 68
+  orig: 57, 68
+  offset: 0, 0
+  index: -1
+C_Waist
+  rotate: false
+  xy: 204, 209
+  size: 38, 19
+  orig: 38, 19
+  offset: 0, 0
+  index: -1
+C_Bag
+  rotate: false
+  xy: 135, 160
+  size: 42, 23
+  orig: 42, 23
+  offset: 0, 0
+  index: -1
+C_B_Hood
+  rotate: false
+  xy: 154, 1
+  size: 72, 52
+  orig: 72, 52
+  offset: 0, 0
+  index: -1
+C_Chest
+  rotate: false
+  xy: 192, 147
+  size: 39, 27
+  orig: 39, 27
+  offset: 0, 0
+  index: -1
+C_Face
+  rotate: false
+  xy: 154, 55
+  size: 60, 57
+  orig: 60, 57
+  offset: 0, 0
+  index: -1
+C_Scarf
+  rotate: false
+  xy: 72, 134
+  size: 61, 30
+  orig: 61, 30
+  offset: 0, 0
+  index: -1
+C_A_Hood
+  rotate: false
+  xy: 1, 1
+  size: 92, 91
+  orig: 92, 91
+  offset: 0, 0
+  index: -1
+C_L_Arm
+  rotate: false
+  xy: 204, 230
+  size: 18, 23
+  orig: 18, 24
+  offset: 0, 1
+  index: -1
+C_L_Forearm
+  rotate: false
+  xy: 230, 176
+  size: 24, 31
+  orig: 24, 31
+  offset: 0, 0
+  index: -1
+C_L_Hand
+  rotate: false
+  xy: 192, 114
+  size: 40, 31
+  orig: 40, 32
+  offset: 0, 0
+  index: -1
+C_L_Shield
+  rotate: false
+  xy: 1, 94
+  size: 74, 37
+  orig: 75, 37
+  offset: 0, 0
+  index: -1

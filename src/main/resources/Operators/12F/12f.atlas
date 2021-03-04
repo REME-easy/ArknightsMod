@@ -1,0 +1,286 @@
+
+12f.png
+size: 256,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+F_Weiba
+  rotate: false
+  xy: 94, 85
+  size: 71, 68
+  orig: 71, 68
+  offset: 0, 0
+  index: -1
+F_R_Dabi
+  rotate: false
+  xy: 137, 254
+  size: 22, 28
+  orig: 22, 28
+  offset: 0, 0
+  index: -1
+F_R_Shouzangli
+  rotate: false
+  xy: 110, 284
+  size: 26, 23
+  orig: 26, 23
+  offset: 0, 0
+  index: -1
+F_R_Wuqi
+  rotate: false
+  xy: 195, 283
+  size: 55, 18
+  orig: 55, 18
+  offset: 0, 0
+  index: -1
+F_R_Xiaoshou
+  rotate: false
+  xy: 73, 285
+  size: 25, 23
+  orig: 25, 23
+  offset: 0, 0
+  index: -1
+F_R_Xiaobi
+  rotate: false
+  xy: 129, 219
+  size: 32, 33
+  orig: 32, 33
+  offset: 0, 0
+  index: -1
+F_R_Waitaohou
+  rotate: false
+  xy: 1, 95
+  size: 88, 44
+  orig: 88, 44
+  offset: 0, 0
+  index: -1
+F_R_Xiaotuii
+  rotate: false
+  xy: 169, 201
+  size: 31, 42
+  orig: 31, 42
+  offset: 0, 0
+  index: -1
+F_R_Xie
+  rotate: false
+  xy: 1, 267
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+F_R_Kuda1
+  rotate: false
+  xy: 100, 285
+  size: 8, 20
+  orig: 8, 20
+  offset: 0, 0
+  index: -1
+F_R_Datui
+  rotate: false
+  xy: 52, 192
+  size: 34, 42
+  orig: 34, 42
+  offset: 0, 0
+  index: -1
+F_R_Kudai0
+  rotate: false
+  xy: 100, 309
+  size: 22, 24
+  orig: 22, 24
+  offset: 0, 0
+  index: -1
+F_L_Xiaotui
+  rotate: false
+  xy: 202, 239
+  size: 27, 42
+  orig: 27, 42
+  offset: 0, 0
+  index: -1
+F_L_Xiezi
+  rotate: false
+  xy: 38, 265
+  size: 33, 20
+  orig: 33, 20
+  offset: 0, 0
+  index: -1
+F_L_Datui
+  rotate: false
+  xy: 214, 160
+  size: 36, 40
+  orig: 36, 40
+  offset: 0, 0
+  index: -1
+F_L_Kudai1
+  rotate: false
+  xy: 1, 227
+  size: 35, 38
+  orig: 35, 38
+  offset: 0, 0
+  index: -1
+F_L_Kudai0
+  rotate: false
+  xy: 110, 254
+  size: 25, 26
+  orig: 25, 26
+  offset: 0, 0
+  index: -1
+F_R_Youyaodia0
+  rotate: false
+  xy: 138, 284
+  size: 16, 34
+  orig: 16, 34
+  offset: 0, 0
+  index: -1
+F_Yao
+  rotate: false
+  xy: 38, 236
+  size: 40, 27
+  orig: 40, 27
+  offset: 0, 0
+  index: -1
+F_Xiong
+  rotate: false
+  xy: 202, 202
+  size: 37, 35
+  orig: 37, 36
+  offset: 0, 1
+  index: -1
+F_R_Youwaitao
+  rotate: false
+  xy: 241, 202
+  size: 10, 33
+  orig: 10, 34
+  offset: 0, 0
+  index: -1
+F_Houlingzi
+  rotate: false
+  xy: 167, 85
+  size: 78, 36
+  orig: 78, 36
+  offset: 0, 0
+  index: -1
+F_Bozi
+  rotate: false
+  xy: 231, 269
+  size: 19, 10
+  orig: 19, 10
+  offset: 0, 0
+  index: -1
+F_Tou
+  rotate: false
+  xy: 94, 1
+  size: 91, 82
+  orig: 91, 82
+  offset: 0, 0
+  index: -1
+F_Zhengchang
+  rotate: false
+  xy: 114, 155
+  size: 51, 35
+  orig: 51, 35
+  offset: 0, 0
+  index: -1
+F_Ai
+  rotate: false
+  xy: 1, 192
+  size: 49, 33
+  orig: 49, 33
+  offset: 0, 0
+  index: -1
+F_Yun
+  rotate: false
+  xy: 88, 219
+  size: 39, 29
+  orig: 39, 29
+  offset: 0, 0
+  index: -1
+F_Ku
+  rotate: false
+  xy: 167, 123
+  size: 51, 35
+  orig: 51, 35
+  offset: 0, 0
+  index: -1
+F_Nu
+  rotate: false
+  xy: 187, 1
+  size: 53, 35
+  orig: 53, 35
+  offset: 0, 0
+  index: -1
+F_Xi
+  rotate: false
+  xy: 187, 38
+  size: 51, 35
+  orig: 51, 35
+  offset: 0, 0
+  index: -1
+F_L_Zuomaozi
+  rotate: false
+  xy: 167, 160
+  size: 45, 39
+  orig: 45, 39
+  offset: 0, 0
+  index: -1
+F_L_Zuowaitao
+  rotate: false
+  xy: 1, 1
+  size: 91, 92
+  orig: 91, 92
+  offset: 0, 0
+  index: -1
+F_Piaodai2
+  rotate: false
+  xy: 88, 201
+  size: 79, 16
+  orig: 79, 16
+  offset: 0, 0
+  index: -1
+F_L_Zuoshouzhang2
+  rotate: false
+  xy: 240, 38
+  size: 10, 22
+  orig: 10, 22
+  offset: 0, 0
+  index: -1
+F_L_Shouji
+  rotate: false
+  xy: 80, 250
+  size: 28, 33
+  orig: 28, 33
+  offset: 0, 0
+  index: -1
+F_L_Zuoshouzhang
+  rotate: false
+  xy: 163, 250
+  size: 30, 34
+  orig: 30, 34
+  offset: 0, 0
+  index: -1
+F_L_Zuodabi
+  rotate: false
+  xy: 231, 239
+  size: 23, 28
+  orig: 23, 28
+  offset: 0, 0
+  index: -1
+F_L_Zuoxiaobi
+  rotate: false
+  xy: 220, 123
+  size: 33, 33
+  orig: 33, 33
+  offset: 0, 0
+  index: -1
+F_Xianglian
+  rotate: false
+  xy: 242, 1
+  size: 9, 23
+  orig: 9, 23
+  offset: 0, 0
+  index: -1
+F_Piaodai
+  rotate: false
+  xy: 1, 155
+  size: 111, 35
+  orig: 111, 35
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,81 @@
+chen_skill.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+frame4
+  rotate: false
+  xy: 2, 877
+  size: 199, 87
+  orig: 199, 87
+  offset: 0, 0
+  index: -1
+frame3
+  rotate: false
+  xy: 2, 190
+  size: 277, 53
+  orig: 277, 53
+  offset: 0, 0
+  index: -1
+frame0
+  rotate: false
+  xy: 2, 2
+  size: 312, 186
+  orig: 312, 186
+  offset: 0, 0
+  index: -1
+chen_01
+  rotate: false
+  xy: 316, 90
+  size: 126, 116
+  orig: 128, 128
+  offset: 1, 6
+  index: 1
+frame1
+  rotate: false
+  xy: 316, 2
+  size: 147, 86
+  orig: 147, 86
+  offset: 0, 0
+  index: -1
+chen
+  rotate: false
+  xy: 2, 621
+  size: 202, 254
+  orig: 256, 256
+  offset: 27, 1
+  index: 1
+chen
+  rotate: false
+  xy: 2, 455
+  size: 256, 164
+  orig: 256, 256
+  offset: 0, 56
+  index: 4
+chen
+  rotate: false
+  xy: 2, 245
+  size: 256, 208
+  orig: 256, 256
+  offset: 0, 28
+  index: 2
+chen
+  rotate: false
+  xy: 260, 516
+  size: 244, 256
+  orig: 256, 256
+  offset: 8, 0
+  index: 5
+frame2
+  rotate: false
+  xy: 281, 208
+  size: 203, 64
+  orig: 203, 64
+  offset: 0, 0
+  index: -1
+chen
+  rotate: false
+  xy: 260, 274
+  size: 250, 240
+  orig: 256, 256
+  offset: 0, 8
+  index: 3
