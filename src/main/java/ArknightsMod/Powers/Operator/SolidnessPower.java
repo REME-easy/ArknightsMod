@@ -80,7 +80,7 @@ public class SolidnessPower extends AbstractPower {
             this.description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
             this.type = PowerType.BUFF;
         } else {
-            this.description = DESCRIPTIONS[2] + amount + DESCRIPTIONS[3];
+            this.description = DESCRIPTIONS[2] + -amount + DESCRIPTIONS[3];
             this.type = PowerType.DEBUFF;
         }
 

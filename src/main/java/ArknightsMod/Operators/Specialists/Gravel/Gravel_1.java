@@ -33,18 +33,18 @@ public class Gravel_1 extends AbstractSkill {
             @Override
             public void update() {
                 AbstractCard card = null;
-                for(AbstractCard c : AbstractDungeon.player.drawPile.group) {
+                for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
                     if(c.cost == 0) {
                         card = c;
-                        AbstractDungeon.player.drawPile.removeCard(card);
                         break;
                     }
                 }
 
                 if(card == null) {
-                    for(AbstractCard c : AbstractDungeon.player.discardPile.group) {
+                    for(AbstractCard c : AbstractDungeon.player.drawPile.group) {
                         if(c.cost == 0) {
                             card = c;
+                            AbstractDungeon.player.drawPile.removeCard(card);
                             break;
                         }
                     }

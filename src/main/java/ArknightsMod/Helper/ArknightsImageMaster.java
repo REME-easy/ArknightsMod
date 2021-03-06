@@ -65,6 +65,9 @@ public class ArknightsImageMaster {
     public static TextureAtlas.AtlasRegion METEOR_2;
     public static TextureAtlas.AtlasRegion COURIER_2;
     public static TextureAtlas.AtlasRegion SCAVENGER_2;
+    public static TextureAtlas.AtlasRegion VIGNA_2;
+    public static TextureAtlas.AtlasRegion ISTINA_1;
+    public static TextureAtlas.AtlasRegion ISTINA_2;
     public static TextureAtlas.AtlasRegion EMPTY;
 
     public static TextureAtlas.AtlasRegion SKILL_READY;
@@ -96,7 +99,8 @@ public class ArknightsImageMaster {
     public static Texture RECRUIT_SUPPORTER;
     public static Texture RECRUIT_CASTER;
     public static Texture RECRUIT_DEFENDER;
-
+    public static Texture REMOVE_OPTION;
+    public static Texture REGROUP_BG;
 
     public static TextureAtlas.AtlasRegion[] CHEN_LONG = new TextureAtlas.AtlasRegion[5];
     public static TextureAtlas.AtlasRegion[] CHEN_SKILL = new TextureAtlas.AtlasRegion[5];
@@ -158,6 +162,9 @@ public class ArknightsImageMaster {
         METEOR_2 = vfxAtlas.findRegion("skill_icon_skchr_shotst_2");
         COURIER_2 = vfxAtlas.findRegion("skill_icon_skchr_blackd_2");
         SCAVENGER_2 = vfxAtlas.findRegion("skill_icon_skchr_scave_2");
+        VIGNA_2 = vfxAtlas.findRegion("skill_icon_skchr_vigna_2");
+        ISTINA_1 = vfxAtlas.findRegion("skill_icon_skchr_glassb_1");
+        ISTINA_2 = vfxAtlas.findRegion("skill_icon_skchr_glassb_2");
         EMPTY = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("ArkImg/skills/empty.png"),0, 0, 128, 128);
 
         charAtlas = new TextureAtlas(Gdx.files.internal("ArkImg/char/char.atlas"));
@@ -202,6 +209,8 @@ public class ArknightsImageMaster {
         RECRUIT_SUPPORTER = ImageMaster.loadImage("ArkImg/UI/supporter_recruit.png");
         RECRUIT_CASTER = ImageMaster.loadImage("ArkImg/UI/caster_recruit.png");
         RECRUIT_DEFENDER = ImageMaster.loadImage("ArkImg/UI/defender_recruit.png");
+        REMOVE_OPTION = ImageMaster.loadImage("ArkImg/UI/RemoveOption.png");
+        REGROUP_BG = ImageMaster.loadImage("ArkImg/UI/regroup_bg.png");
 
         logger.info("Texture load time: " + (System.currentTimeMillis() - startTime) + "ms");
         AbstractOperatorCard.init();

@@ -9,10 +9,12 @@ import ArknightsMod.Cards.Operator.Defenders.SpotCard;
 import ArknightsMod.Cards.Operator.Guards.*;
 import ArknightsMod.Cards.Operator.Medic.AnselCard;
 import ArknightsMod.Cards.Operator.Medic.HibiscCard;
+import ArknightsMod.Cards.Operator.Medic.Lancet2Card;
 import ArknightsMod.Cards.Operator.Snipers.*;
 import ArknightsMod.Cards.Operator.Specialists.GravelCard;
 import ArknightsMod.Cards.Operator.Specialists.RedCard;
 import ArknightsMod.Cards.Operator.Specialists.THRMEXCard;
+import ArknightsMod.Cards.Operator.Supporter.IstinaCard;
 import ArknightsMod.Cards.Operator.Supporter.MayerCard;
 import ArknightsMod.Cards.Operator.Supporter.OrchidCard;
 import ArknightsMod.Cards.Operator.Vanguards.*;
@@ -30,17 +32,29 @@ public class OperatorHelper {
     public static HashMap<String, AbstractOperatorCard> allOperatorsCards = new HashMap<>();
 
     public static void addOperators(){
-        Object[] operators = new Object[] {new AngelCard(), new THRMEXCard(), new SilverashCard(), new TexasCard(),
-                new YatoCard(), new NoirCorneCard(), new EyjafjallaCard(), new _12FCard(), new RangersCard(),
-                new AnselCard(), new OrchidCard(), new MidnightCard(), new SpotCard(), new DurinCard(), new CatapultCard(),
-                new PopukarCard(), new StewardCard(), new KroosCard(), new AdnachCard(), new LavaCard(), new BluepCard(),
-                new LiskarmCard(), new RedCard(), new LapplandCard(), new JessicaCard(), new HazeCard(), new GitanoCard(),
-                new FangCard(), new HibiscCard(), new ChenCard(), new GravelCard(), new MayerCard(), new SpecterCard(),
-                new NearlCard(), new MeteorCard(), new CourierCard(), new ScavengerCard(), new VignaCard()};
+        Object[] operators = new Object[] {
+                new AngelCard(), new THRMEXCard(), new SilverashCard(), new TexasCard(), new YatoCard(), new NoirCorneCard(),
+                new EyjafjallaCard(), new _12FCard(), new RangersCard(), new AnselCard(), new OrchidCard(), new MidnightCard(),
+                new SpotCard(), new DurinCard(), new CatapultCard(), new PopukarCard(), new StewardCard(), new KroosCard(),
+                new AdnachCard(), new LavaCard(), new BluepCard(), new LiskarmCard(), new RedCard(), new LapplandCard(),
+                new JessicaCard(), new HazeCard(), new GitanoCard(), new FangCard(), new HibiscCard(), new ChenCard(),
+                new GravelCard(), new MayerCard(), new SpecterCard(), new NearlCard(), new MeteorCard(), new CourierCard(),
+                new ScavengerCard(), new VignaCard(), new Lancet2Card(), new Castle3Card(), new IstinaCard(),
+        };
         for(Object o:operators){
             allOperatorsCards.put(((AbstractOperatorCard) o).cardID, (AbstractOperatorCard)o);
             BaseMod.addCard(((AbstractOperatorCard) o).makeCopy());
         }
+    }
+
+    public static ArrayList<AbstractCard> operatorsInDeck() {
+        ArrayList<AbstractCard> cards = new ArrayList<>();
+        for(AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if(c instanceof AbstractOperatorCard) {
+                cards.add(c.makeStatEquivalentCopy());
+            }
+        }
+        return cards;
     }
 
     public static ArrayList<AbstractCard> getOperatorReward(int num, OperatorType type) {

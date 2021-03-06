@@ -28,7 +28,7 @@ public class OperatorReward extends CustomReward {
     public int index = -1;
     public boolean renderLink = false;
 
-    public static  HashMap<OperatorType, Stat> table = new HashMap<>();
+    public static final HashMap<OperatorType, Stat> table = new HashMap<>();
     static {
         table.put(OperatorType.DEFENDER, new Stat(9, ArknightsImageMaster.RECRUIT_DEFENDER));
         table.put(OperatorType.GUARD, new Stat(10, ArknightsImageMaster.RECRUIT_GUARD));

@@ -798,7 +798,7 @@ public abstract class AbstractOperator extends AbstractCreature {
             this.nameColor.r = Interpolation.fade.apply(Color.DARK_GRAY.r, Settings.CREAM_COLOR.r, this.hoverTimer * 10.0F);
             this.nameColor.g = Interpolation.fade.apply(Color.DARK_GRAY.g, Settings.CREAM_COLOR.g, this.hoverTimer * 3.0F);
             this.nameColor.b = Interpolation.fade.apply(Color.DARK_GRAY.b, Settings.CREAM_COLOR.b, this.hoverTimer * 3.0F);
-            float y = Interpolation.exp10Out.apply(this.healthHb.cY, this.healthHb.cY - (this.maxSkill > 0 ? 0 : 1) * 40.0F * Settings.scale, this.nameColor.a);
+            float y = Interpolation.exp10Out.apply(this.healthHb.cY, this.healthHb.cY - (this.maxSkill > 0 ? 1 : 0) * 40.0F * Settings.scale, this.nameColor.a);
             float x = this.hb.cX - this.animX;
             this.nameBgColor.a = this.nameColor.a / 2.0F * this.hbAlpha;
             sb.setColor(this.nameBgColor);

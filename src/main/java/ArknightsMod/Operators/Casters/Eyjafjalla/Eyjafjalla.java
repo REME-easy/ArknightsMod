@@ -86,7 +86,6 @@ public class Eyjafjalla extends AbstractOperator {
             this.state.addAnimation(0, "Skill_Loop", true, 0.0F);
         }else{
             this.state.addAnimation(0, "Idle", true, 0.0F);
-
         }
     }
 

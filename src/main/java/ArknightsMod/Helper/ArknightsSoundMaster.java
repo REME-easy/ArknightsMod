@@ -109,6 +109,8 @@ public class ArknightsSoundMaster {
             map.put("scavenger_skill", load("Scavenger/scavenger_skill.ogg"));
             map.put("vigna_start", load("Vigna/vigna_start.ogg"));
             map.put("vigna_skill", load("Vigna/vigna_skill.ogg"));
+            map.put("castle3_start", load("Castle3/castle3_start.ogg"));
+            map.put("lancet2_start", load("Lancet2/lancet2_start.ogg"));
 
             map.put("svash_3", load("Svash/svash_3.ogg"));
             map.put("red_2", load("Red/red_2.ogg"));

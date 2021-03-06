@@ -68,7 +68,7 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
 
     //TODO:
     //  敌方
-    //  干员（23/？）
+    //  干员（23/39）
     //  图标
     //  图集
 

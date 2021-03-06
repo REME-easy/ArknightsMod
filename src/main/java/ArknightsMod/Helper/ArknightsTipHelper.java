@@ -17,6 +17,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static com.megacrit.cardcrawl.helpers.FontHelper.*;
+
 public class ArknightsTipHelper {
     private static final UIStrings uiStrings;
     public static final String[] TEXT;
@@ -291,6 +293,13 @@ public class ArknightsTipHelper {
         }
 
         return sb.toString();
+    }
+
+    public static void renderViewTip(SpriteBatch sb, String msg, float x, float y, Color color) {
+        layout.setText(cardDescFont_N, msg);
+        sb.setColor(Settings.TWO_THIRDS_TRANSPARENT_BLACK_COLOR);
+        sb.draw(ImageMaster.WHITE_SQUARE_IMG, x - layout.width / 2.0F - 12.0F * Settings.scale, y - 24.0F * Settings.scale, layout.width + 24.0F * Settings.scale, 48.0F * Settings.scale);
+        renderFontCentered(sb, cardDescFont_N, msg, x, y, color);
     }
 
     @SpirePatch(

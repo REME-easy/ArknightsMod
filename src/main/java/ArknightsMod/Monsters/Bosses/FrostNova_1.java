@@ -2,22 +2,19 @@ package ArknightsMod.Monsters.Bosses;
 
 import ArknightsMod.Actions.DamageAllFriendsAction;
 import ArknightsMod.Actions.PlzWaitAction;
+import ArknightsMod.Cards.Status.Frozen;
 import ArknightsMod.Helper.GeneralHelper;
 import ArknightsMod.Monsters.AbstractEnemy;
 import ArknightsMod.Powers.Monster.MagicAttackPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
-import com.megacrit.cardcrawl.actions.common.RollMoveAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class FrostNova_1 extends AbstractEnemy {
     private static final String DIR = "Frstar_1";
@@ -33,6 +30,7 @@ public class FrostNova_1 extends AbstractEnemy {
     private static final float HB_H = 200.0F;
 
     private boolean isRevive = false;
+    private boolean firstTurn = true;
 
     public FrostNova_1() {
         this(0.0F, 0.0F);
@@ -46,8 +44,8 @@ public class FrostNova_1 extends AbstractEnemy {
         } else {
             this.setHp(MAX_HP);
         }
-
-        this.damage.add(new DamageInfo(this, 5, DamageType.THORNS));
+        this.enemyTags.add(EnemyTag.YETI);
+        this.damage.add(new DamageInfo(this, 10, DamageType.THORNS));
         this.specialDamage.add(new DamageInfo(this, 4, DamageType.THORNS));
     }
 
@@ -80,10 +78,12 @@ public class FrostNova_1 extends AbstractEnemy {
                 @Override
                 public void update() {
                     showHealthBar();
+                    for(DamageInfo info : damage) {
+                        info.base += 2;
+                    }
                     isDone = true;
                 }
             });
-            addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, 2)));
             addToBot(new HealAction(this, this, maxHealth));
         }
     }
@@ -120,13 +120,22 @@ public class FrostNova_1 extends AbstractEnemy {
             case 2:
                 this.playAttackAnim();
                 this.playIdleAnim();
+                this.addToBot(new MakeTempCardInHandAction(new Frozen(), 1));
         }
         GeneralHelper.addToBot(new RollMoveAction(this));
     }
 
     @Override
     protected void getMove(int num) {
-        this.setMove((byte)1, Intent.ATTACK, this.damage.get(0).base);
+        if(firstTurn) {
+            this.setMove((byte)2, Intent.DEBUFF);
+            return;
+        }
+        if(num < 50) {
+            this.setMove((byte)1, Intent.ATTACK, this.damage.get(0).base);
+        }else {
+            this.setMove((byte)2, Intent.DEBUFF);
+        }
     }
 
     @Override

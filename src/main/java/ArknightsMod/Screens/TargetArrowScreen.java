@@ -1,6 +1,5 @@
 package ArknightsMod.Screens;
 
-import ArknightsMod.Helper.GeneralHelper;
 import ArknightsMod.Utils.TargetArrow;
 import basemod.interfaces.ISubscriber;
 import com.badlogic.gdx.Gdx;
@@ -189,7 +188,6 @@ public class TargetArrowScreen implements TargetArrow.TargetArrowSubscriber {
             if (AbstractDungeon.screen == Enum.TARGET_SCREEN) {
                 TargetArrowScreen.Inst.render(sb);
             }
-
         }
 
         private static class Locator extends SpireInsertLocator {
