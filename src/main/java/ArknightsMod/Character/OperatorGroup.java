@@ -14,7 +14,6 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.ui.buttons.PeekButton;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
@@ -62,10 +61,12 @@ public class OperatorGroup {
 
     public static void showHitboxes() {
         hitboxes.clear();
+        float oX = AbstractDungeon.player.drawX - Settings.WIDTH * 0.25F;
+        float oY = AbstractDungeon.player.drawY - AbstractDungeon.floorY;
         for (int i = 0; i < maxSize; i++) {
             hitboxes.add(new OperatorPosition(135.0F * Settings.scale, 100.0F * Settings.scale));
             OperatorPosition hb = hitboxes.get(i);
-            hb.translate(POINTS[i].x * Settings.scale, POINTS[i].y * Settings.scale);
+            hb.translate(POINTS[i].x * Settings.scale + oX, POINTS[i].y * Settings.scale + oY);
             hb.show();
             for(AbstractOperator o : GetOperators()) {
                 if(o.index == i) {
@@ -246,41 +247,6 @@ public class OperatorGroup {
 
         for (AbstractOperator m : this.operators) {
             m.render(sb);
-        }
-    }
-
-    public void applyEndOfTurnPowers() {
-        Iterator var1 = this.operators.iterator();
-
-        AbstractOperator m;
-        while(var1.hasNext()) {
-            m = (AbstractOperator)var1.next();
-            if (!m.isDying) {
-                m.applyEndOfTurnTriggers();
-            }
-        }
-
-        var1 = AbstractDungeon.player.powers.iterator();
-
-        while(var1.hasNext()) {
-            AbstractPower p = (AbstractPower)var1.next();
-            p.atEndOfRound();
-        }
-
-        var1 = this.operators.iterator();
-
-        while(true) {
-            do {
-                if (!var1.hasNext()) {
-                    return;
-                }
-
-                m = (AbstractOperator)var1.next();
-            } while(m.isDying);
-
-            for (AbstractPower p : m.powers) {
-                p.atEndOfRound();
-            }
         }
     }
 

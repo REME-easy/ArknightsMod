@@ -5,8 +5,8 @@ import ArknightsMod.Operators.AbstractOperator;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,7 +36,7 @@ public class operatorDamageAssistAction extends AbstractGameAction {
             this.isDone = true;
         } else {
             if(targets == 1) {
-                AbstractMonster target = operator.getAttackTarget();
+                AbstractCreature target = operator.getAttackTarget();
 
                 if(target == null){
                     target = GeneralHelper.getRandomMonsterSafe();
@@ -52,14 +52,14 @@ public class operatorDamageAssistAction extends AbstractGameAction {
                     this.addToBot(new DamageAction(target, new DamageInfo(operator, atk, operator.damageType), operator.attackEffect));
                 }
             }else if (targets > 1) {
-                ArrayList<AbstractMonster> tmp = new ArrayList<>();
+                ArrayList<AbstractCreature> tmp = new ArrayList<>();
                 int tmp2 = targets;
                 while (tmp.size() < tmp2) {
-                    AbstractMonster target = operator.getAttackTarget();
+                    AbstractCreature target = operator.getAttackTarget();
                     boolean dupe = false;
                     if(target == null || tmp.contains(target)) target = GeneralHelper.getRandomMonsterSafe();
 
-                    for(AbstractMonster m : tmp) if (m == target) dupe = true;
+                    for(AbstractCreature m : tmp) if (m == target) dupe = true;
 
                     if(!dupe) tmp.add(target);
 
@@ -67,7 +67,7 @@ public class operatorDamageAssistAction extends AbstractGameAction {
 //                    logger.info(String.format("targets:%d,alive:%d,already:%d", targets, tmp2, tmp.size()));
                 }
 
-                for(AbstractMonster m : tmp) {
+                for(AbstractCreature m : tmp) {
                     int a = atk;
                     a = (int)operator.UseWhenAttack(m, operator, a);
                     AbstractGameEffect effect = this.operator.playAttackBulletEffect(m);

@@ -12,6 +12,7 @@ import ArknightsMod.Powers.Operator.AbstractArkPower;
 import ArknightsMod.Powers.Operator.CantAttackPower;
 import ArknightsMod.Powers.Operator.ResummonPower;
 import ArknightsMod.Vfx.Common.GainAttackEffect;
+import ArknightsMod.Vfx.UI.AttackTargetEffect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -36,7 +37,6 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.BobEffect;
 import com.megacrit.cardcrawl.vfx.combat.BlockedWordEffect;
@@ -59,8 +59,6 @@ public abstract class AbstractOperator extends AbstractCreature {
     private float escapeButtonTimer = 0.0F;
     private float skillBarWidth;
     private float targetSkillBarWidth;
-//    private float start_x;
-//    private float start_y;
     private float escapeBtnAlpha;
     private float escapeBtnX;
     private float escapeBtnSize;
@@ -84,6 +82,7 @@ public abstract class AbstractOperator extends AbstractCreature {
     private BobEffect bobEffect;
 
     public int Atk;
+    public int def;
     private int showAtk;
     public int attackTimes = 1;
     public int attackTargets = 1;
@@ -98,12 +97,12 @@ public abstract class AbstractOperator extends AbstractCreature {
     public boolean canAttack;
     public DamageType damageType;
     public AbstractGameAction.AttackEffect attackEffect;
+    private AttackTargetEffect showAtkEffect;
 
-//    private boolean isMoving = false;
     public boolean canPlayStart = true;
     public boolean isMelee;
     private boolean isToEscape = false;
-    public AbstractMonster lastTarget = null;
+    public AbstractCreature lastTarget = null;
 
     private ArrayList<AbstractGameEffect> effects;
     public ArrayList<AbstractSkill> skills;
@@ -127,9 +126,10 @@ public abstract class AbstractOperator extends AbstractCreature {
     private static final float INTENT_HB_W = 64.0F * Settings.scale;
 
     public static final OperatorType[] OPERATOR_TYPES = OperatorType.values();
+    private boolean isShowingAtk = false;
 
 
-    public AbstractOperator(String id, String atlas, String json,int Atk, int attackCoolDown, int maxHP, int resummonTime, int level, OperatorType operatorType, float hb_x, float hb_y){
+    public AbstractOperator(String id, String atlas, String json,int Atk, int attackCoolDown, int maxHP, int def, int resummonTime, int level, OperatorType operatorType, float hb_x, float hb_y){
         this.nameColor = new Color();
         this.nameBgColor = new Color(0.0F, 0.0F, 0.0F, 0.0F);
         this.ShbBgColor = new Color(0.0F, 0.0F, 0.0F, 0.0F);
@@ -167,12 +167,14 @@ public abstract class AbstractOperator extends AbstractCreature {
         this.currentAttackCoolDown = 0;
         this.attackCoolDown = attackCoolDown;
         this.showAtk = this.Atk = Atk;
+        this.def = def;
         this.maxHealth = this.currentHealth = maxHP;
         this.resummonTime = resummonTime;
         this.attackEffect = AbstractGameAction.AttackEffect.BLUNT_LIGHT;
         this.skills = new ArrayList<>();
         this.effects = new ArrayList<>();
         this.bobEffect = new BobEffect();
+        this.showAtkEffect = new AttackTargetEffect();
 
         this.loadAnimation(atlas, json, 2.2F);
         this.stateData.setDefaultMix(0.1F);
@@ -259,6 +261,12 @@ public abstract class AbstractOperator extends AbstractCreature {
         this.playStartSfx();
         //this.addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, Atk), Atk));
         //this.addAttack(Atk);
+        AbstractCreature m = getAttackTarget();
+        if(m != null) {
+            this.lastTarget = m;
+        } else {
+            this.lastTarget = GeneralHelper.getRandomMonsterSafe();
+        }
         for(AbstractOperator o:OperatorGroup.GetOperators()){
             o.OtherOperatorEnter(this);
         }
@@ -419,7 +427,7 @@ public abstract class AbstractOperator extends AbstractCreature {
         return tmp;
     }
 
-    public AbstractMonster getAttackTarget(){
+    public AbstractCreature getAttackTarget(){
         if(lastTarget != null) {
             if(!lastTarget.isDeadOrEscaped() && !lastTarget.isDead) {
                 return lastTarget;
@@ -530,16 +538,35 @@ public abstract class AbstractOperator extends AbstractCreature {
     }
 
     public void showAttackCoolDown(int num) {
-        if(this.attackCoolDown - this.currentAttackCoolDown <= num) {
-            this.fontScale = 0.9F;
-            this.CDFontColor = Color.CYAN.cpy();
-            this.showAtk = getAttackToTarget();
-        }else {
-            this.fontScale = 0.6F;
-            this.CDFontColor = Color.WHITE.cpy();
-            this.showAtk = this.Atk;
+        if(!GeneralHelper.isAlive(lastTarget)) {
+            AbstractCreature m = getAttackTarget();
+            if(m != null) {
+                this.lastTarget = m;
+            } else {
+                this.lastTarget = GeneralHelper.getRandomMonsterSafe();
+            }
         }
-
+        if(lastTarget != null) {
+            if(this.attackCoolDown - this.currentAttackCoolDown <= num && !isShowingAtk) {
+                this.fontScale = 0.9F;
+                this.CDFontColor = Color.CYAN.cpy();
+                this.showAtk = getAttackToTarget();
+                this.isShowingAtk = true;
+                if(!isHealer) {
+                    showAtkEffect = new AttackTargetEffect();
+                    showAtkEffect.set(lastTarget.hb.cX, lastTarget.hb.cY, hb.cX, hb.cY);
+                    AbstractDungeon.effectList.add(showAtkEffect);
+                }
+            }else if(isShowingAtk){
+                this.fontScale = 0.6F;
+                this.CDFontColor = Color.WHITE.cpy();
+                this.showAtk = this.Atk;
+                this.isShowingAtk = false;
+                if(!isHealer && showAtkEffect != null) {
+                    showAtkEffect.isDone = true;
+                }
+            }
+        }
     }
 
     public void damage(DamageInfo info) {
@@ -560,21 +587,15 @@ public abstract class AbstractOperator extends AbstractCreature {
             AbstractPower p;
             Iterator var6;
 
-            for(var6 = this.powers.iterator(); var6.hasNext(); damageAmount = p.atDamageFinalReceive(damageAmount, DamageType.NORMAL)) {
+            for(var6 = this.powers.iterator(); var6.hasNext(); damageAmount = p.atDamageFinalReceive(damageAmount, info.type)) {
                 p = (AbstractPower)var6.next();
             }
 
-            for(var6 = info.owner.powers.iterator(); var6.hasNext(); damageAmount = p.atDamageFinalGive(damageAmount, DamageType.NORMAL)) {
+            for(var6 = info.owner.powers.iterator(); var6.hasNext(); damageAmount = p.atDamageFinalGive(damageAmount, info.type)) {
                 p = (AbstractPower)var6.next();
             }
             
             Iterator var5;
-            AbstractRelic r;
-            if (info.owner == AbstractDungeon.player) {
-                for(var5 = AbstractDungeon.player.relics.iterator(); var5.hasNext(); damageAmount = r.onAttackToChangeDamage(info, (int)damageAmount)) {
-                    r = (AbstractRelic)var5.next();
-                }
-            }
 
             if (info.owner != null) {
                 for(var5 = info.owner.powers.iterator(); var5.hasNext(); damageAmount = p.onAttackToChangeDamage(info, (int)damageAmount)) {
@@ -582,21 +603,13 @@ public abstract class AbstractOperator extends AbstractCreature {
                 }
             }
 
+            logger.info("受到的伤害：" + damageAmount);
             for(var5 = this.powers.iterator(); var5.hasNext(); damageAmount = p.onAttackedToChangeDamage(info, (int)damageAmount)) {
                 p = (AbstractPower)var5.next();
             }
 
             if(currentBattleSkill != null && currentBattleSkill.isSpelling){
                 damageAmount = (int)currentBattleSkill.onDamage(damageAmount);
-            }
-
-            if (info.owner == AbstractDungeon.player) {
-                var5 = AbstractDungeon.player.relics.iterator();
-
-                while(var5.hasNext()) {
-                    r = (AbstractRelic)var5.next();
-                    r.onAttack(info, (int)damageAmount, this);
-                }
             }
 
             var5 = this.powers.iterator();
@@ -1163,15 +1176,11 @@ public abstract class AbstractOperator extends AbstractCreature {
 
         this.skills.clear();
         this.effects.clear();
-
+        this.showAtkEffect.isDone = true;
     }
 
     protected void addToBot(AbstractGameAction action) {
         AbstractDungeon.actionManager.addToBottom(action);
-    }
-
-    protected void addToTop(AbstractGameAction action) {
-        AbstractDungeon.actionManager.addToTop(action);
     }
 
     public enum OperatorType{

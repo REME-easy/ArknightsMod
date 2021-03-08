@@ -28,9 +28,8 @@ public class AnselCounter extends AbstractCounterPower {
 
     @Override
     public void activePower() {
-        if(this.isAcitve && this.owner instanceof AbstractOperator) {
+        if(this.owner instanceof AbstractOperator) {
             ((AbstractOperator) this.owner).attackTimes += 1;
-            this.isAcitve = false;
         }
     }
 
@@ -40,6 +39,7 @@ public class AnselCounter extends AbstractCounterPower {
         if(this.isAcitve) {
             if(this.owner instanceof AbstractOperator) {
                 ((AbstractOperator) this.owner).attackTimes -= 1;
+                this.isAcitve = false;
             }
         }
 

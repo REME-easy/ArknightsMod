@@ -6,6 +6,7 @@ import ArknightsMod.Operators.AbstractOperator;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -47,7 +48,7 @@ public class Steward extends AbstractOperator {
     }
 
     @Override
-    public AbstractMonster getAttackTarget() {
+    public AbstractCreature getAttackTarget() {
         if (super.getAttackTarget() != null) return super.getAttackTarget();
         AbstractMonster m = null;
         for(AbstractMonster m1 : AbstractDungeon.getMonsters().monsters){

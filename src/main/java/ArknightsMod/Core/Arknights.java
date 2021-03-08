@@ -62,13 +62,13 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
     private static final String BG_SKILL_1024 = "ArkImg/1024/bg_skill_arknights.png";
     private static final String big_orb = "ArkImg/1024/card_default_gray_orb.png";
     private static final String energy_orb = "ArkImg/512/card_small_orb.png";
-    private static final Color grey = getColor(220.0f,220.0f,220.0f);
+    private static final Color grey = getColor(152.0f,152.0f,152.0f);
 
     public static boolean[] activeTutorials = new boolean[]{true, true, true, true, true, true};
 
     //TODO:
     //  敌方
-    //  干员（23/39）
+    //  干员（23/39/42）
     //  图标
     //  图集
 

@@ -42,11 +42,11 @@ public class Icebrk extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.damage.add(new DamageInfo(this, 12));
-            this.specialDamage.add(new DamageInfo(this, 4));
-        } else {
-            this.damage.add(new DamageInfo(this, 10));
+            this.damage.add(new DamageInfo(this, 8));
             this.specialDamage.add(new DamageInfo(this, 3));
+        } else {
+            this.damage.add(new DamageInfo(this, 7));
+            this.specialDamage.add(new DamageInfo(this, 2));
         }
         this.enemyTags.add(EnemyTag.YETI);
         this.extraTip.header = TIPS[0];

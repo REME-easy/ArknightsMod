@@ -548,7 +548,7 @@ public abstract class AbstractEnemy extends AbstractMonster {
     protected void renderIntent(SpriteBatch sb) {
         SpireSuper.call(new Object[]{sb});
         if (this.specialIntentImg != null && this.specialIntent != AbstractMonster.Intent.UNKNOWN) {
-            if (this.intent != AbstractMonster.Intent.DEBUFF && this.intent != AbstractMonster.Intent.STRONG_DEBUFF) {
+            if (this.specialIntent != AbstractMonster.Intent.DEBUFF && this.specialIntent != AbstractMonster.Intent.STRONG_DEBUFF) {
                 this.specialIntentAngle = 0.0F;
             } else {
                 this.specialIntentAngle += Gdx.graphics.getDeltaTime() * 150.0F;

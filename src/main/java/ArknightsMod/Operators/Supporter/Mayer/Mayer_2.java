@@ -37,7 +37,7 @@ public class Mayer_2 extends AbstractSkill {
                 AbstractPlayer p = AbstractDungeon.player;
                 int i = 0;
                 for(AbstractOrb o : p.orbs) {
-                    if(o.ID.equals(Motter.ID)) {
+                    if(Motter.ID.equals(o.ID)) {
                         i++;
                     }
                 }

@@ -38,10 +38,8 @@ public class KroosCounter extends AbstractCounterPower {
 
     @Override
     public void activePower() {
-        if(this.isAcitve) {
-            if(owner instanceof AbstractOperator) {
-                ((AbstractOperator) owner).addAttack(3);
-            }
+        if(owner instanceof AbstractOperator) {
+            ((AbstractOperator) owner).addAttack(3);
         }
         //this.addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, 2)));
 

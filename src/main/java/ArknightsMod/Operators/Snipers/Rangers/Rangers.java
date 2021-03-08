@@ -49,7 +49,7 @@ public class Rangers extends AbstractOperator {
     }
 
     @Override
-    public AbstractMonster getAttackTarget() {
+    public AbstractCreature getAttackTarget() {
         if (super.getAttackTarget() != null) return super.getAttackTarget();
         for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
             if(m.hasPower(FlightPower.POWER_ID)) {

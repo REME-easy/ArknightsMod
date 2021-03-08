@@ -16,7 +16,7 @@ public class Snbow extends AbstractEnemy {
     public  static final String NAME = monsterStrings.NAME;
     private static final String ATLAS = "Enemies/" + DIR + "/" + DIR + ".atlas";
     private static final String JSON = "Enemies/" + DIR + "/" + DIR + ".json";
-    private static final int MAX_HP = 28;
+    private static final int MAX_HP = 25;
     private static final int CD = 4;
     private static final float SIZE = 2.0F;
     private static final float HB_W = 125.0F;
@@ -36,9 +36,9 @@ public class Snbow extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.specialDamage.add(new DamageInfo(this, 5));
-        } else {
             this.specialDamage.add(new DamageInfo(this, 4));
+        } else {
+            this.specialDamage.add(new DamageInfo(this, 3));
         }
     }
 

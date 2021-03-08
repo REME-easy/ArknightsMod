@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.beyond.Darkling;
 import com.megacrit.cardcrawl.monsters.city.Byrd;
 import com.megacrit.cardcrawl.monsters.city.Centurion;
+import com.megacrit.cardcrawl.monsters.city.GremlinLeader;
 import com.megacrit.cardcrawl.monsters.city.Healer;
 import com.megacrit.cardcrawl.powers.CuriosityPower;
 import com.megacrit.cardcrawl.powers.FlightPower;
@@ -188,6 +189,9 @@ public class ServalPatches {
 
         public static SpireReturn<Void> Prefix(ApplyPowerAction _inst) {
             if(_inst.source != null && Healer.ID.equals(_inst.source.id) && !Centurion.ID.equals(_inst.target.id)) {
+                _inst.isDone = true;
+                return SpireReturn.Return(null);
+            }else if(_inst.source != null && GremlinLeader.ID.equals(_inst.source.id) && (_inst.target instanceof AbstractEnemy)) {
                 _inst.isDone = true;
                 return SpireReturn.Return(null);
             }

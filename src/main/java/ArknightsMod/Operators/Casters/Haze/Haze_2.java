@@ -64,6 +64,6 @@ public class Haze_2 extends AbstractSkill {
 
     @Override
     public String getSkillAnim() {
-        return "Attack";
+        return "Attack_Loop";
     }
 }

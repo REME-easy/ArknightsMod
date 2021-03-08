@@ -6,6 +6,7 @@ import ArknightsMod.Character.OperatorGroup;
 import ArknightsMod.Operators.AbstractOperator;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -48,7 +49,7 @@ public class Red extends AbstractOperator {
     }
 
     @Override
-    public AbstractMonster getAttackTarget() {
+    public AbstractCreature getAttackTarget() {
         AbstractMonster m = OperatorGroup.lastMonsterAttack;
         if(m != null && !m.isDeadOrEscaped() && !m.isDead)
             return m;

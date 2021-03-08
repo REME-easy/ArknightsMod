@@ -21,7 +21,7 @@ public class Snsbr extends AbstractEnemy {
     public  static final String NAME = monsterStrings.NAME;
     private static final String ATLAS = "Enemies/" + DIR + "/" + DIR + ".atlas";
     private static final String JSON = "Enemies/" + DIR + "/" + DIR + ".json";
-    private static final int MAX_HP = 30;
+    private static final int MAX_HP = 27;
     private static final int CD = 3;
     private static final float SIZE = 2.0F;
     private static final float HB_W = 125.0F;
@@ -46,13 +46,13 @@ public class Snsbr extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.damage.add(new DamageInfo(this, 7));
-            this.damage.add(new DamageInfo(this, 4));
-            this.specialDamage.add(new DamageInfo(this, 5));
-        } else {
-            this.damage.add(new DamageInfo(this, 6));
+            this.damage.add(new DamageInfo(this, 5));
             this.damage.add(new DamageInfo(this, 3));
             this.specialDamage.add(new DamageInfo(this, 4));
+        } else {
+            this.damage.add(new DamageInfo(this, 4));
+            this.damage.add(new DamageInfo(this, 2));
+            this.specialDamage.add(new DamageInfo(this, 3));
         }
         this.enemyTags.add(EnemyTag.YETI);
     }

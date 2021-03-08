@@ -6,8 +6,11 @@ import ArknightsMod.Cards.Status.Frozen;
 import ArknightsMod.Helper.GeneralHelper;
 import ArknightsMod.Monsters.AbstractEnemy;
 import ArknightsMod.Powers.Monster.MagicAttackPower;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.DamageInfo.DamageType;
@@ -15,6 +18,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import com.megacrit.cardcrawl.vfx.BorderLongFlashEffect;
+import com.megacrit.cardcrawl.vfx.combat.FallingIceEffect;
 
 public class FrostNova_1 extends AbstractEnemy {
     private static final String DIR = "Frstar_1";
@@ -45,8 +51,8 @@ public class FrostNova_1 extends AbstractEnemy {
             this.setHp(MAX_HP);
         }
         this.enemyTags.add(EnemyTag.YETI);
-        this.damage.add(new DamageInfo(this, 10, DamageType.THORNS));
-        this.specialDamage.add(new DamageInfo(this, 4, DamageType.THORNS));
+        this.damage.add(new DamageInfo(this, 8, DamageType.THORNS));
+        this.specialDamage.add(new DamageInfo(this, 3, DamageType.THORNS));
     }
 
     @Override
@@ -131,7 +137,7 @@ public class FrostNova_1 extends AbstractEnemy {
             this.setMove((byte)2, Intent.DEBUFF);
             return;
         }
-        if(num < 50) {
+        if(num < 75) {
             this.setMove((byte)1, Intent.ATTACK, this.damage.get(0).base);
         }else {
             this.setMove((byte)2, Intent.DEBUFF);
@@ -142,6 +148,27 @@ public class FrostNova_1 extends AbstractEnemy {
     protected void specialTakeTurn() {
         this.state.addAnimation(0, "Skill_1", false, 0.0F);
         this.playIdleAnim();
+        this.addToBot(new VFXAction(new AbstractGameEffect() {
+
+            @Override
+            public void update() {
+            }
+
+            @Override
+            public void render(SpriteBatch spriteBatch) {
+                CardCrawlGame.sound.playA("ORB_FROST_CHANNEL", 0.0F);
+                AbstractDungeon.effectsQueue.add(new BorderLongFlashEffect(Color.SKY));
+                for(int i = 0; i < 25; ++i) {
+                    AbstractDungeon.effectsQueue.add(new FallingIceEffect(25, true));
+                }
+                this.isDone = true;
+            }
+
+            @Override
+            public void dispose() {
+
+            }
+        }));
         GeneralHelper.addToBot(new DamageAllFriendsAction(this.specialDamage.get(0), AttackEffect.BLUNT_LIGHT, true));
     }
 

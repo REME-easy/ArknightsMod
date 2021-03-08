@@ -43,7 +43,7 @@ public class GeneralHelper {
     public static ArrayList<AbstractMonster> monsters() {return  AbstractDungeon.getMonsters().monsters;}
 
     public static boolean isAlive(AbstractCreature c) {
-        return !c.isDeadOrEscaped() && !c.isDead;
+        return c != null && !c.isDeadOrEscaped() && !c.isDead;
     }
 
     public static int aliveMonstersAmount() {

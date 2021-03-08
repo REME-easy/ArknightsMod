@@ -47,7 +47,6 @@ public class Frozen extends CustomCard {
                 isDone = true;
             }
         });
-
     }
 
     @Override

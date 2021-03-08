@@ -31,6 +31,7 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.AbstractMonster.EnemyType;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
@@ -196,31 +197,8 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
         }
     }
 
-    public static void OnBattleStart() throws InstantiationException, IllegalAccessException {
+    public static void OnBattleStart() {
         GenerateEnemyGroup();
-        boolean isBoss = false;
-
-        for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-            if(m.type == AbstractMonster.EnemyType.BOSS) {
-                isBoss = true;
-                break;
-            }
-        }
-
-        if(isBoss) {
-            for(MonsterStat s : monsterStats) {
-                if(s.value == 99) {
-                    AbstractMonster m1 = allMonsters.get(s.id).getClass().newInstance();
-                    GeneralHelper.addToBot(new SpawnMonsterAction(m1, false));
-                    if(m1 instanceof AbstractEnemy) {
-                        ((AbstractEnemy) m1).movePosition(m1.drawX - 200.0F * Settings.scale, m1.drawY - 100.0F * Settings.scale);
-                    }
-                    m1.usePreBattleAction();
-                    break;
-                }
-            }
-        }
-
     }
 
     private static void OnTurnStart() throws InstantiationException, IllegalAccessException {
@@ -378,9 +356,21 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
     public static class NextWavePatch {
         public NextWavePatch() {}
 
-        public static void Postfix(AbstractMonster _inst, boolean triggerRelics) throws InstantiationException, IllegalAccessException {
+        public static void Prefix(AbstractMonster _inst, boolean triggerRelics) throws InstantiationException, IllegalAccessException {
             if(GeneralHelper.aliveMonstersAmount() == 0) {
                 NextWave();
+            }
+            if(_inst.type == EnemyType.BOSS) {
+                for(MonsterStat s : monsterStats) {
+                    if(s.value == 99) {
+                        AbstractMonster m1 = allMonsters.get(s.id).getClass().newInstance();
+                        GeneralHelper.addToBot(new SpawnMonsterAction(m1, false));
+                        if(m1 instanceof AbstractEnemy) {
+                            ((AbstractEnemy) m1).movePosition(m1.drawX, m1.drawY);
+                        }
+                        m1.usePreBattleAction();
+                    }
+                }
             }
         }
     }
