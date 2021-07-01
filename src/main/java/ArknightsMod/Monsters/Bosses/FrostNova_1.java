@@ -51,8 +51,8 @@ public class FrostNova_1 extends AbstractEnemy {
             this.setHp(MAX_HP);
         }
         this.enemyTags.add(EnemyTag.YETI);
-        this.damage.add(new DamageInfo(this, 8, DamageType.THORNS));
-        this.specialDamage.add(new DamageInfo(this, 3, DamageType.THORNS));
+        this.damage.add(new DamageInfo(this, 12, DamageType.THORNS));
+        this.specialDamage.add(new DamageInfo(this, 5, DamageType.THORNS));
     }
 
     @Override
@@ -104,6 +104,9 @@ public class FrostNova_1 extends AbstractEnemy {
         if(isRevive) {
             this.state.setAnimation(0, "Die", false);
             super.die(triggerRelics);
+            CardCrawlGame.screenShake.rumble(2.0F);
+            this.onBossVictoryLogic();
+
         }
     }
 

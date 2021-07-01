@@ -5,8 +5,10 @@ import ArknightsMod.Monsters.AbstractEnemy;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
@@ -23,7 +25,6 @@ public class Frozen extends CustomCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.STATUS, CardColor.COLORLESS,
                 CardRarity.SPECIAL, CardTarget.NONE);
         this.exhaust = true;
-        this.selfRetain = true;
     }
 
     @Override
@@ -33,24 +34,26 @@ public class Frozen extends CustomCard {
 
     @Override
     public void triggerOnEndOfPlayerTurn() {
-        super.triggerOnEndOfPlayerTurn();
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                flash();
-                for(AbstractMonster m : GeneralHelper.monsters()) {
-                    if(m instanceof AbstractEnemy && ((AbstractEnemy) m).enemyTags.contains(AbstractEnemy.EnemyTag.YETI)) {
-                        this.addToBot(new ApplyPowerAction(m, m, new StrengthPower(m, 1)));
-                        this.addToBot(new ApplyPowerAction(m, m, new LoseStrengthPower(m, 1)));
-                    }
-                }
-                isDone = true;
-            }
-        });
+        this.dontTriggerOnUseCard = true;
+        AbstractDungeon.actionManager.cardQueue.add(new CardQueueItem(this, true));
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-
+        if (this.dontTriggerOnUseCard) {
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    flash();
+                    for (AbstractMonster m : GeneralHelper.monsters()) {
+                        if (m instanceof AbstractEnemy && ((AbstractEnemy) m).enemyTags.contains(AbstractEnemy.EnemyTag.YETI)) {
+                            this.addToBot(new ApplyPowerAction(m, m, new StrengthPower(m, 1)));
+                            this.addToBot(new ApplyPowerAction(m, m, new LoseStrengthPower(m, 1)));
+                        }
+                    }
+                    isDone = true;
+                }
+            });
+        }
     }
 }

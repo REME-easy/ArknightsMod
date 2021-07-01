@@ -38,7 +38,7 @@ public class Mortar extends AbstractEnemy {
         if (AbstractDungeon.ascensionLevel >= 2) {
             this.specialDamage.add(new DamageInfo(this, 12));
         } else {
-            this.specialDamage.add(new DamageInfo(this, 9));
+            this.specialDamage.add(new DamageInfo(this, 10));
         }
         this.extraTip.header = TIPS[0];
         this.extraTip.body = TIPS[1];

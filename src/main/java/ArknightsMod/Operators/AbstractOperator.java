@@ -11,6 +11,7 @@ import ArknightsMod.Powers.Monster.MagicAttackPower;
 import ArknightsMod.Powers.Operator.AbstractArkPower;
 import ArknightsMod.Powers.Operator.CantAttackPower;
 import ArknightsMod.Powers.Operator.ResummonPower;
+import ArknightsMod.Powers.Operator.SolidnessPower;
 import ArknightsMod.Vfx.Common.GainAttackEffect;
 import ArknightsMod.Vfx.UI.AttackTargetEffect;
 import com.badlogic.gdx.Gdx;
@@ -94,7 +95,9 @@ public abstract class AbstractOperator extends AbstractCreature {
     public int resummonTime;
     public int cost;
     public boolean isHealer;
+    protected boolean showTarget;
     public boolean canAttack;
+    public boolean canPlayAttack = true;
     public DamageType damageType;
     public AbstractGameAction.AttackEffect attackEffect;
     private AttackTargetEffect showAtkEffect;
@@ -113,9 +116,6 @@ public abstract class AbstractOperator extends AbstractCreature {
     public OperatorType operatorType;
     public CardStrings cardStrings;
     private String[] texts;
-
-//    private static boolean IsDragging = false;
-//    private static AbstractOperator HoveredOperator;
 
     public int index;
 
@@ -156,6 +156,7 @@ public abstract class AbstractOperator extends AbstractCreature {
         this.level = level;
         this.operatorType = operatorType;
         this.isHealer = this.operatorType == OperatorType.MEDIC;
+        this.showTarget = !this.isHealer;
         this.isMelee = !(this.operatorType != OperatorType.GUARD && this.operatorType != OperatorType.VANGUARD && this.operatorType != OperatorType.DEFENDER && this.operatorType != OperatorType.SPECIALIST);
         if(CardCrawlGame.isInARun()) {
             if (this.operatorType == OperatorType.CASTER || this.operatorType == OperatorType.SUPPORTER)
@@ -244,6 +245,10 @@ public abstract class AbstractOperator extends AbstractCreature {
         return "Attack";
     }
 
+    public String playAttackBeginAnim() {return null;}
+
+    public String playAttackEndAnim() {return null;}
+
     public void playIdleAnim(){
         this.state.addAnimation(0, "Idle", true, 0.0F);
     }
@@ -274,6 +279,10 @@ public abstract class AbstractOperator extends AbstractCreature {
             currentBattleSkill.useWhenSummoned();
         }
 
+        if(def > 0) {
+            addToBot(new ApplyPowerAction(this, this, new SolidnessPower(this, def)));
+        }
+
         skillBarUpdatedEvent();
     }
 
@@ -290,6 +299,7 @@ public abstract class AbstractOperator extends AbstractCreature {
         for(AbstractPower p:powers){
             p.atEndOfTurn(isPlayer);
             p.atEndOfRound();
+            p.atEndOfTurnPreEndTurnCards(true);
         }
         if(currentBattleSkill != null && currentBattleSkill.isSpelling){
             currentBattleSkill.onEndOfTurn();
@@ -367,11 +377,6 @@ public abstract class AbstractOperator extends AbstractCreature {
     }
 
     public void addAttack(int i) {
-//        if(i > 0) {
-//            this.addToBot(new ApplyPowerAction(this, this, new StrengthPower(this, i)));
-//        }else {
-//            this.addToBot(new ReducePowerAction(this, this, "Strength", i));
-//        }
         GeneralHelper.addEffect(new GainAttackEffect());
         this.Atk += i;
         this.showAtk = this.Atk;
@@ -379,10 +384,6 @@ public abstract class AbstractOperator extends AbstractCreature {
 
     public int getAttackToTarget() {
         float atk = Atk;
-//        if(this.hasPower("Strength"))
-//            atk = Math.max(0, this.getPower("Strength").amount);
-//        else
-//            atk = 0;
 
         for(AbstractPower p : this.powers) atk = p.atDamageGive(atk, damageType);
 
@@ -548,11 +549,11 @@ public abstract class AbstractOperator extends AbstractCreature {
         }
         if(lastTarget != null) {
             if(this.attackCoolDown - this.currentAttackCoolDown <= num && !isShowingAtk) {
-                this.fontScale = 0.9F;
+                this.fontScale = 0.75F;
                 this.CDFontColor = Color.CYAN.cpy();
                 this.showAtk = getAttackToTarget();
                 this.isShowingAtk = true;
-                if(!isHealer) {
+                if(showTarget) {
                     showAtkEffect = new AttackTargetEffect();
                     showAtkEffect.set(lastTarget.hb.cX, lastTarget.hb.cY, hb.cX, hb.cY);
                     AbstractDungeon.effectList.add(showAtkEffect);
@@ -562,7 +563,7 @@ public abstract class AbstractOperator extends AbstractCreature {
                 this.CDFontColor = Color.WHITE.cpy();
                 this.showAtk = this.Atk;
                 this.isShowingAtk = false;
-                if(!isHealer && showAtkEffect != null) {
+                if(showTarget && showAtkEffect != null) {
                     showAtkEffect.isDone = true;
                 }
             }
@@ -603,7 +604,7 @@ public abstract class AbstractOperator extends AbstractCreature {
                 }
             }
 
-            logger.info("受到的伤害：" + damageAmount);
+            logger.info(name + "受到的伤害：" + damageAmount);
             for(var5 = this.powers.iterator(); var5.hasNext(); damageAmount = p.onAttackedToChangeDamage(info, (int)damageAmount)) {
                 p = (AbstractPower)var5.next();
             }
@@ -708,7 +709,7 @@ public abstract class AbstractOperator extends AbstractCreature {
                 this.skeleton.updateWorldTransform();
                 this.skeleton.setPosition(this.drawX + this.animX, this.drawY + this.animY);
                 this.skeleton.setColor(this.tint.color);
-                this.skeleton.setFlip(this.flipHorizontal, this.flipVertical);
+                this.skeleton.setFlip(AbstractDungeon.player.flipHorizontal, this.flipVertical);
                 sb.end();
                 CardCrawlGame.psb.begin();
                 sr.draw(CardCrawlGame.psb, this.skeleton);

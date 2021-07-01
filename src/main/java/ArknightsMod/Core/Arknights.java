@@ -2,6 +2,7 @@ package ArknightsMod.Core;
 
 import ArknightsMod.Cards.Attack.SwordRain;
 import ArknightsMod.Cards.Operator.AbstractOperatorCard;
+import ArknightsMod.Cards.Operator.Snipers.HandOperators.FireWatchHandCard;
 import ArknightsMod.Cards.Operator.Token.MotterCard;
 import ArknightsMod.Cards.Skill.Divination;
 import ArknightsMod.Cards.Status.Frozen;
@@ -13,6 +14,7 @@ import ArknightsMod.Monsters.EnemyManager;
 import ArknightsMod.Operators.AbstractOperator.OperatorType;
 import ArknightsMod.Relics.BattleRecord;
 import ArknightsMod.Screens.ArknighsTutorial;
+import ArknightsMod.Screens.RegroupScreen;
 import ArknightsMod.Utils.OperatorReward;
 import basemod.BaseMod;
 import basemod.ModLabeledToggleButton;
@@ -115,15 +117,15 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
         } else if (language == Settings.GameLanguage.ZHS) {
             lang = "zh";
         }
-        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/ArknightsRelics_" + lang + ".json");
-        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/ArknightsCards_" + lang + ".json");
-        BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/ArknightsPowers_" + lang + ".json");
-        //BaseMod.loadCustomStringsFile(EventStrings.class, "localization/ArknightsEvent_" + lang + ".json");
-        BaseMod.loadCustomStringsFile(MonsterStrings.class,"localization/ArknightsMonsters_"+ lang +".json");
-        BaseMod.loadCustomStringsFile(OrbStrings.class,"localization/ArknightsOrbs_" + lang + ".json");
-        BaseMod.loadCustomStringsFile(CharacterStrings.class, "localization/ArknightsChar_" + lang + ".json");
-        BaseMod.loadCustomStringsFile(UIStrings.class, "localization/ArknightsUI_" + lang + ".json");
-        BaseMod.loadCustomStringsFile(TutorialStrings.class, "localization/ArknightsTutorials_" + lang + ".json");
+        BaseMod.loadCustomStringsFile(RelicStrings.class, "localization/" + lang + "/ArknightsRelics.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "localization/" + lang + "/ArknightsCards.json");
+        BaseMod.loadCustomStringsFile(PowerStrings.class, "localization/" + lang + "/ArknightsPowers.json");
+        //BaseMod.loadCustomStringsFile(EventStrings.class, "localization/ArknightsEvent" + lang + ".json");
+        BaseMod.loadCustomStringsFile(MonsterStrings.class,"localization/"+ lang + "/ArknightsMonsters.json");
+        BaseMod.loadCustomStringsFile(OrbStrings.class,"localization/" + lang + "/ArknightsOrbs.json");
+        BaseMod.loadCustomStringsFile(CharacterStrings.class, "localization/" + lang + "/ArknightsChar.json");
+        BaseMod.loadCustomStringsFile(UIStrings.class, "localization/" + lang + "/ArknightsUI.json");
+        BaseMod.loadCustomStringsFile(TutorialStrings.class, "localization/" + lang + "/ArknightsTutorials.json");
     }
 
     @Override
@@ -133,6 +135,7 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
         BaseMod.addCard(new Divination());
         BaseMod.addCard(new MotterCard());
         BaseMod.addCard(new Frozen());
+        BaseMod.addCard(new FireWatchHandCard());
     }
 
     @Override
@@ -149,7 +152,7 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
         }
 
         logger.info("===开始加载关键词===");
-        String json = Gdx.files.internal("localization/ArknightsKeywords_" + lang + ".json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String json = Gdx.files.internal("localization/" + lang + "/ArknightsKeywords.json").readString(String.valueOf(StandardCharsets.UTF_8));
         Keyword[] keywords = (gson.fromJson(json, Keyword[].class));
         if (keywords != null) {
             for(Keyword keyword : keywords) {
@@ -229,6 +232,7 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
     @Override
     public void receivePostDungeonInitialize(){
         obtain(AbstractDungeon.player, new BattleRecord(), false);
+        RegroupScreen.collectedOperators.clear();
     }
 
     @Override
@@ -255,12 +259,7 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
                 ((AbstractOperatorCard) c).onBattleStartInDeck(room);
             }
         }
-
-        try {
-            EnemyManager.OnBattleStart();
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        EnemyManager.OnBattleStart();
 
         if(activeTutorials[0]) {
             GeneralHelper.addToBot(new AbstractGameAction() {
@@ -270,6 +269,14 @@ public class Arknights implements  EditCharactersSubscriber,EditStringsSubscribe
                     this.isDone = true;
                 }
             });
+        }
+    }
+
+    public static void receiveOnBattleStartPostDraw() {
+        for(AbstractCard c:AbstractDungeon.player.masterDeck.group){
+            if(c instanceof AbstractOperatorCard){
+                ((AbstractOperatorCard) c).onBattleStartPostDrawInDeck();
+            }
         }
     }
 

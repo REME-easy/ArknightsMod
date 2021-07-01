@@ -24,6 +24,9 @@ public class ArknightsImageMaster {
     public static TextureAtlas.AtlasRegion CHARGE_COST_1;
     public static TextureAtlas.AtlasRegion CHARGE_COST_2;
     public static TextureAtlas.AtlasRegion CHARGE_COST_3;
+    public static TextureAtlas.AtlasRegion DEF_UP_1;
+    public static TextureAtlas.AtlasRegion DEF_UP_2;
+    public static TextureAtlas.AtlasRegion DEF_UP_3;
     public static TextureAtlas.AtlasRegion TEXAS_2;
     public static TextureAtlas.AtlasRegion EYJAFJALLA_1;
     public static TextureAtlas.AtlasRegion EYJAFJALLA_2;
@@ -32,6 +35,8 @@ public class ArknightsImageMaster {
     public static TextureAtlas.AtlasRegion ANSEL_1;
     public static TextureAtlas.AtlasRegion MIDNIGHT_1;
     public static TextureAtlas.AtlasRegion QUICK_ATTACK_1;
+    public static TextureAtlas.AtlasRegion QUICK_ATTACK_2;
+    public static TextureAtlas.AtlasRegion QUICK_ATTACK_3;
     public static TextureAtlas.AtlasRegion CATAP_1;
     public static TextureAtlas.AtlasRegion ATK_UP_1;
     public static TextureAtlas.AtlasRegion ATK_UP_2;
@@ -68,11 +73,20 @@ public class ArknightsImageMaster {
     public static TextureAtlas.AtlasRegion VIGNA_2;
     public static TextureAtlas.AtlasRegion ISTINA_1;
     public static TextureAtlas.AtlasRegion ISTINA_2;
+    public static TextureAtlas.AtlasRegion CUORA_2;
+    public static TextureAtlas.AtlasRegion ZIMA_2;
+    public static TextureAtlas.AtlasRegion FIREWATCH_1;
+    public static TextureAtlas.AtlasRegion FIREWATCH_2;
+    public static TextureAtlas.AtlasRegion SKADI_2;
+    public static TextureAtlas.AtlasRegion SKADI_3;
+    public static TextureAtlas.AtlasRegion SORA_1;
+    public static TextureAtlas.AtlasRegion SORA_2;
     public static TextureAtlas.AtlasRegion EMPTY;
 
     public static TextureAtlas.AtlasRegion SKILL_READY;
     public static TextureAtlas.AtlasRegion ESCAPE;
     public static TextureAtlas.AtlasRegion ATTACK_COOLDOWN;
+    public static TextureAtlas.AtlasRegion DEF;
     public static TextureAtlas.AtlasRegion ATTACK;
     public static TextureAtlas.AtlasRegion STAR_1;
     public static TextureAtlas.AtlasRegion STAR_2;
@@ -129,6 +143,8 @@ public class ArknightsImageMaster {
         ANSEL_1 = vfxAtlas.findRegion("skill_icon_skcom_range_extend");
         MIDNIGHT_1 = vfxAtlas.findRegion("skill_icon_skcom_enchant[1]");
         QUICK_ATTACK_1 = vfxAtlas.findRegion("skill_icon_skcom_quickattack[1]");
+        QUICK_ATTACK_2 = vfxAtlas.findRegion("skill_icon_skcom_quickattack[2]");
+        QUICK_ATTACK_3 = vfxAtlas.findRegion("skill_icon_skcom_quickattack[3]");
         CATAP_1 = vfxAtlas.findRegion("skill_icon_skcom_blowrange_up[1]");
         ATK_UP_1 = vfxAtlas.findRegion("skill_icon_skcom_atk_up[1]");
         ATK_UP_2 = vfxAtlas.findRegion("skill_icon_skcom_atk_up[2]");
@@ -165,12 +181,24 @@ public class ArknightsImageMaster {
         VIGNA_2 = vfxAtlas.findRegion("skill_icon_skchr_vigna_2");
         ISTINA_1 = vfxAtlas.findRegion("skill_icon_skchr_glassb_1");
         ISTINA_2 = vfxAtlas.findRegion("skill_icon_skchr_glassb_2");
+        CUORA_2 = vfxAtlas.findRegion("skill_icon_skchr_snakek_2");
+        DEF_UP_1 = vfxAtlas.findRegion("skill_icon_skcom_def_up[1]");
+        DEF_UP_2 = vfxAtlas.findRegion("skill_icon_skcom_def_up[2]");
+        DEF_UP_3 = vfxAtlas.findRegion("skill_icon_skcom_def_up[3]");
+        ZIMA_2 = vfxAtlas.findRegion("skill_icon_skchr_headbr_2");
+        FIREWATCH_1 = vfxAtlas.findRegion("skill_icon_skchr_milu_1");
+        FIREWATCH_2 = vfxAtlas.findRegion("skill_icon_skchr_milu_2");
+        SKADI_2 = vfxAtlas.findRegion("skill_icon_skchr_skadi_2");
+        SKADI_3 = vfxAtlas.findRegion("skill_icon_skchr_skadi_3");
+        SORA_1 = vfxAtlas.findRegion("skill_icon_skchr_sora_1");
+        SORA_2 = vfxAtlas.findRegion("skill_icon_skchr_sora_2");
         EMPTY = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("ArkImg/skills/empty.png"),0, 0, 128, 128);
 
         charAtlas = new TextureAtlas(Gdx.files.internal("ArkImg/char/char.atlas"));
         SKILL_READY = charAtlas.findRegion("ready");
         ESCAPE = charAtlas.findRegion("escape");
         ATTACK_COOLDOWN = charAtlas.findRegion("frame11");
+        DEF = new TextureAtlas.AtlasRegion(ImageMaster.loadImage("ArkImg/char/resist_icon.png"),0, 0, 23, 23);
         ATTACK = charAtlas.findRegion("frame10");
         STAR_1 = charAtlas.findRegion("star", 1);
         STAR_2 = charAtlas.findRegion("star", 2);

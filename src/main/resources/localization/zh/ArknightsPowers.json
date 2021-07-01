@@ -125,5 +125,11 @@
     "DESCRIPTIONS": [
       "生命不会低于 #b1 。当你抽牌堆为空时，技能结束，且不能再抽牌。"
     ]
+  },
+  "Arknights_SleepingPower": {
+    "NAME": "沉睡",
+    "DESCRIPTIONS": [
+      "不能造成伤害。不能受到伤害。持续 #b"," 回合。"
+    ]
   }
 }

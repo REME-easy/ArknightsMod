@@ -1,6 +1,7 @@
 package ArknightsMod.Patches;
 
 import ArknightsMod.Cards.Operator.AbstractOperatorCard;
+import ArknightsMod.Core.Arknights;
 import ArknightsMod.Monsters.AbstractEnemy;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,6 +12,7 @@ import com.megacrit.cardcrawl.actions.utility.HideHealthBarAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.beyond.Darkling;
@@ -21,8 +23,11 @@ import com.megacrit.cardcrawl.monsters.city.Healer;
 import com.megacrit.cardcrawl.powers.CuriosityPower;
 import com.megacrit.cardcrawl.powers.FlightPower;
 import com.megacrit.cardcrawl.relics.MummifiedHand;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
 
 public class ServalPatches {
 
@@ -196,6 +201,31 @@ public class ServalPatches {
                 return SpireReturn.Return(null);
             }
             return SpireReturn.Continue();
+        }
+    }
+
+    @SpirePatch(
+            clz = AbstractRoom.class,
+            method = "update"
+    )
+    public static class StartBattlePostDrawPatch {
+        public StartBattlePostDrawPatch() {}
+
+        @SpireInsertPatch(
+                locator = Locator.class
+        )
+        public static void Insert(AbstractRoom _inst) {
+            Arknights.receiveOnBattleStartPostDraw();
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            private Locator() {
+            }
+
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractPlayer.class, "applyStartOfCombatLogic");
+                return LineFinder.findInOrder(ctBehavior, new ArrayList<>(), finalMatcher);
+            }
         }
     }
 }

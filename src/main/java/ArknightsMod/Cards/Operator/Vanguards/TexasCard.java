@@ -28,7 +28,6 @@ public class TexasCard extends AbstractOperatorCard {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, EXTENDED_DESCRIPTION,
                 CardType.POWER, ARK_NIGHTS,
                 CardRarity.RARE, CardTarget.NONE);
-        this.isInnate = true;
         this.setStat();
         this.initSkillHitbox();
     }

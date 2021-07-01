@@ -24,7 +24,7 @@ public class Lslime extends AbstractEnemy {
     private static final String[] TIPS = monsterStrings.DIALOG;
     private static final String ATLAS = "Enemies/" + DIR + "/" + DIR + ".atlas";
     private static final String JSON = "Enemies/" + DIR + "/" + DIR + ".json";
-    private static final int MAX_HP = 140;
+    private static final int MAX_HP = 250;
     private static final int CD = 14;
     private static final float SIZE = 2.0F;
     private static final float HB_W = 125.0F;
@@ -43,8 +43,8 @@ public class Lslime extends AbstractEnemy {
             this.setHp(MAX_HP);
         }
 
-        this.damage.add(new DamageInfo(this, 1));
-        this.specialDamage.add(new DamageInfo(this, 10));
+        this.damage.add(new DamageInfo(this, 5));
+        this.specialDamage.add(new DamageInfo(this, 14));
         this.extraTip.header = TIPS[0];
         this.extraTip.body = TIPS[1];
     }
@@ -110,6 +110,13 @@ public class Lslime extends AbstractEnemy {
     @Override
     protected void specialGetMove(int i) {
         this.setSpecialMove((byte)1, Intent.ATTACK_DEBUFF, this.specialDamage.get(0).base);
+    }
+
+    public void die() {
+        this.useFastShakeAnimation(3.0F);
+        CardCrawlGame.screenShake.rumble(2.0F);
+        super.die();
+        this.onBossVictoryLogic();
     }
 
     @Override

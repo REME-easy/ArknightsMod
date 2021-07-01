@@ -46,12 +46,12 @@ public class Snsbr extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.damage.add(new DamageInfo(this, 5));
-            this.damage.add(new DamageInfo(this, 3));
+            this.damage.add(new DamageInfo(this, 6));
+            this.damage.add(new DamageInfo(this, 4));
             this.specialDamage.add(new DamageInfo(this, 4));
         } else {
-            this.damage.add(new DamageInfo(this, 4));
-            this.damage.add(new DamageInfo(this, 2));
+            this.damage.add(new DamageInfo(this, 5));
+            this.damage.add(new DamageInfo(this, 3));
             this.specialDamage.add(new DamageInfo(this, 3));
         }
         this.enemyTags.add(EnemyTag.YETI);

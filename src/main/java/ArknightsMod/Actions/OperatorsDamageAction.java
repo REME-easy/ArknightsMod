@@ -54,8 +54,19 @@ public class OperatorsDamageAction extends AbstractGameAction {
                 if(operator.attackTargets == 1) {
                     if(operator.isHealer){
                         //logger.info("isHealer");
-                        if(anim != null){
-                            this.addToBot(new OperatorsChangeAnimationAction(operator, anim, false, 0.0F));
+                        if(anim != null && operator.canPlayAttack){
+                                this.addToBot(new AbstractGameAction() {
+                                    @Override
+                                    public void update() {
+                                        if(operator.playAttackBeginAnim() != null)
+                                            operator.state.addAnimation(0, operator.playAttackBeginAnim(), false, 0.0F);
+                                        operator.state.addAnimation(0, anim, false, 0.0F);
+                                        if(operator.playAttackEndAnim() != null)
+                                            operator.state.addAnimation(0, operator.playAttackEndAnim(), false, 0.0F);
+                                        operator.playIdleAnim();
+                                    isDone = true;
+                                    }
+                                });
                             //logger.info("OperatorsChangeAnimationAction");
                         }
                         for(i = 0 ; i < times ; i++){
@@ -80,7 +91,7 @@ public class OperatorsDamageAction extends AbstractGameAction {
                         }
                         this.addToBot(new WaitAction(0.1F));
                     }else if(operator.canAttack){
-                        if(anim != null){
+                        if(anim != null && operator.canPlayAttack){
                             this.addToBot(new OperatorsChangeAnimationAction(operator, anim, false, 0.0F));
                         }
                         for(i = 0 ; i < times ; i++){

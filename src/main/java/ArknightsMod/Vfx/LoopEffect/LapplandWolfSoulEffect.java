@@ -25,6 +25,7 @@ public class LapplandWolfSoulEffect extends AbstractGameEffect {
     private static AtlasRegion whiteWolfImg = new AtlasRegion(ImageMaster.loadImage("ArkImg/vfx/langtou_01.png"), 0, 0, 128, 128);
 
     public LapplandWolfSoulEffect(float x, float y, boolean isBlack) {
+        this.p = new Vector2();
         this.cX = x;
         this.cY = y;
         this.isBlack = isBlack;

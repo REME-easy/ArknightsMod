@@ -2,10 +2,7 @@ package ArknightsMod.Helper;
 
 import ArknightsMod.Cards.Operator.AbstractOperatorCard;
 import ArknightsMod.Cards.Operator.Casters.*;
-import ArknightsMod.Cards.Operator.Defenders.LiskarmCard;
-import ArknightsMod.Cards.Operator.Defenders.NearlCard;
-import ArknightsMod.Cards.Operator.Defenders.NoirCorneCard;
-import ArknightsMod.Cards.Operator.Defenders.SpotCard;
+import ArknightsMod.Cards.Operator.Defenders.*;
 import ArknightsMod.Cards.Operator.Guards.*;
 import ArknightsMod.Cards.Operator.Medic.AnselCard;
 import ArknightsMod.Cards.Operator.Medic.HibiscCard;
@@ -17,8 +14,10 @@ import ArknightsMod.Cards.Operator.Specialists.THRMEXCard;
 import ArknightsMod.Cards.Operator.Supporter.IstinaCard;
 import ArknightsMod.Cards.Operator.Supporter.MayerCard;
 import ArknightsMod.Cards.Operator.Supporter.OrchidCard;
+import ArknightsMod.Cards.Operator.Supporter.SoraCard;
 import ArknightsMod.Cards.Operator.Vanguards.*;
 import ArknightsMod.Operators.AbstractOperator.OperatorType;
+import ArknightsMod.Screens.RegroupScreen;
 import basemod.BaseMod;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -39,7 +38,8 @@ public class OperatorHelper {
                 new AdnachCard(), new LavaCard(), new BluepCard(), new LiskarmCard(), new RedCard(), new LapplandCard(),
                 new JessicaCard(), new HazeCard(), new GitanoCard(), new FangCard(), new HibiscCard(), new ChenCard(),
                 new GravelCard(), new MayerCard(), new SpecterCard(), new NearlCard(), new MeteorCard(), new CourierCard(),
-                new ScavengerCard(), new VignaCard(), new Lancet2Card(), new Castle3Card(), new IstinaCard(),
+                new ScavengerCard(), new VignaCard(), new Lancet2Card(), new Castle3Card(), new IstinaCard(), new CuoraCard(),
+                new ZimaCard(), new FirewatchCard(), new SkadiCard(), new SoraCard()
         };
         for(Object o:operators){
             allOperatorsCards.put(((AbstractOperatorCard) o).cardID, (AbstractOperatorCard)o);
@@ -79,10 +79,22 @@ public class OperatorHelper {
                 }
             }
 
-            for(AbstractCard c2 : tmp) {
-                if(c.cardID.equals(c2.cardID)) {
-                    canAdd = false;
-                    break;
+            if(canAdd) {
+                for(String s : RegroupScreen.collectedOperators) {
+                    if(c.cardID.equals(s)) {
+                        canAdd = false;
+                        amt--;
+                        break;
+                    }
+                }
+            }
+
+            if(canAdd) {
+                for(AbstractCard c2 : tmp) {
+                    if(c.cardID.equals(c2.cardID)) {
+                        canAdd = false;
+                        break;
+                    }
                 }
             }
 

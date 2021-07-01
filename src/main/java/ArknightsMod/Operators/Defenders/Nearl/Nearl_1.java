@@ -22,12 +22,10 @@ public class Nearl_1 extends AbstractSkill {
 
     @Override
     public void ActiveEffect() {
-        this.owner.isHealer = true;
     }
 
     @Override
     public void EndEffect() {
-        this.owner.isHealer = false;
     }
 
     @Override
@@ -41,11 +39,6 @@ public class Nearl_1 extends AbstractSkill {
     }
 
     @Override
-    public String getSkillAnim() {
-        return "Skill";
-    }
-
-    @Override
     public float onAttack(float dmg) {
         return dmg * 1.5F;
     }
@@ -53,7 +46,8 @@ public class Nearl_1 extends AbstractSkill {
     @Override
     public void onOtherOperatorDamage(AbstractOperator operator) {
         super.onOtherOperatorDamage(operator);
-        if(isSpelling && operator.currentHealth <= operator.maxHealth / 2) {
+        if(isSpelling && !operator.isDeadOrEscaped() && operator.currentHealth <= operator.maxHealth / 2) {
+            owner.state.addAnimation(0, "Skill", false, 0.0F);
             this.addToBot(new OperatorHealAction(operator, owner));
             this.addToBot(new AbstractGameAction() {
                 @Override

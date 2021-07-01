@@ -43,10 +43,10 @@ public class BombSlime extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.damage.add(new DamageInfo(this, 5));
+            this.damage.add(new DamageInfo(this, 6));
             this.bombAmt = 12;
         } else {
-            this.damage.add(new DamageInfo(this, 4));
+            this.damage.add(new DamageInfo(this, 5));
             this.bombAmt = 10;
         }
         this.specialDamage.add(new DamageInfo(this, 2));

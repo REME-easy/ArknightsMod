@@ -4,7 +4,9 @@ import ArknightsMod.Helper.ArknightsTipHelper;
 import ArknightsMod.Utils.CustomScrollBar;
 import basemod.BaseMod;
 import basemod.abstracts.CustomSavable;
+import basemod.interfaces.ISubscriber;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.google.gson.reflect.TypeToken;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -14,12 +16,16 @@ import com.megacrit.cardcrawl.helpers.MathHelper;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.screens.mainMenu.ScrollBarListener;
 import com.megacrit.cardcrawl.ui.buttons.GridSelectConfirmButton;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.overlayMenu;
 
-public class RegroupScreen implements CustomSavable<ArrayList<String>> {
+public class RegroupScreen implements CustomSavable<ArrayList<String>>, ISubscriber {
+    private static final Logger logger = LogManager.getLogger(RegroupScreen.class);
     private static final int CARDS_PER_LINE = 4;
     private static final float NORMAL_SCALE = 0.6F;
     private static final float HOVERED_SCALE = 1.0F;
@@ -45,6 +51,7 @@ public class RegroupScreen implements CustomSavable<ArrayList<String>> {
     }
 
     private RegroupScreen() {
+        BaseMod.subscribe(this);
         BaseMod.addSaveField("Arknights_Collect", this);
     }
 
@@ -160,11 +167,19 @@ public class RegroupScreen implements CustomSavable<ArrayList<String>> {
 
     @Override
     public void onLoad(ArrayList<String> strings) {
-        if(!strings.isEmpty()) {
+        if(strings != null) {
             collectedOperators.clear();
             collectedOperators.addAll(strings);
+            logger.info(strings);
+            logger.info(collectedOperators);
         }
     }
+
+    public Type savedType()
+    {
+        return new TypeToken<ArrayList<String>>(){}.getType();
+    }
+
 
     public interface ScreenListener {
         void receiveClose();

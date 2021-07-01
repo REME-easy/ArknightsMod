@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 public class Texas_2 extends AbstractSkill {
     private static final boolean IS_AUTOMATIC = false;
     private static final int MAX_SKILLPOINT = 12;
-    private static final int ORIGINAL_SKILLPOINT = 8;
+    private static final int ORIGINAL_SKILLPOINT = 7;
     private static final int SKILLTIMES = 1;
     private static final SkillType SKILL_TYPE = SkillType.NATURAL;
 

@@ -1,0 +1,33 @@
+{
+  "ArknightsCerber_Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "ArknightsCerber_Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点 格挡 。"
+  },
+  "ArknightsCerber_ReallyColdAxe": {
+    "NAME": "很冰的斧",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL  源石技艺 ：使目标本回合失去 !M! 点 力量 。"
+  },
+  "ArknightsCerber_PutItInPack": {
+    "NAME": "放在包里",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 将它们装入 *行囊 。"
+  },
+  "ArknightsCerber_Pack": {
+    "NAME": "行囊",
+    "DESCRIPTION": "获得装入的卡牌。",
+    "EXTENDED_DESCRIPTION" : [
+      " NL （","）"
+    ]
+  },
+  "ArknightsCerber_ABunchOfSpells": {
+    "NAME": "一大群法术",
+    "DESCRIPTION": " 源石技艺 ： 随机对敌人造成 !D! 点伤害 !M! 次。"
+  },
+  "ArknightsCerber_CastAgain": {
+    "NAME": "再放一遍！",
+    "DESCRIPTION": " 源石技艺 ： 随机对敌人造成 !D! 点伤害 !M! 次。"
+  }
+}

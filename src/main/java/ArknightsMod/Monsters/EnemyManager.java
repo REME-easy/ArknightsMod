@@ -22,17 +22,22 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.google.gson.reflect.TypeToken;
-import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.EnemyType;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.powers.MinionPower;
+import com.megacrit.cardcrawl.powers.SlowPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
 import com.megacrit.cardcrawl.ui.panels.TopPanel;
@@ -45,6 +50,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
+
+import static ArknightsMod.Helper.GeneralHelper.addToBot;
 
 public class EnemyManager implements CustomSavable<String>, ISubscriber {
     private static final Logger logger = LogManager.getLogger(EnemyManager.class);
@@ -60,6 +67,10 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
     private static ArrayList<String> currentGroup = new ArrayList<>();
     private static ArrayList<MonsterStat> monsterStats = new ArrayList<>();
     private static int maxCount;
+    private static boolean firstDeath = true;
+
+    private static final int MAX_ENEMIES = 6;
+    private static final int MAX_WAVE_NUM = 3;
 
     private static String makeID(String id) {
         return "Arknights_" + id;
@@ -136,7 +147,7 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
             currentGroup.clear();
 
             //TODO value to change.
-            int val = Math.max(AbstractDungeon.floorNum / 2, 1);
+            int val = Math.max((int)(AbstractDungeon.floorNum * 0.8F), 1);
             if(AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
                 val /= 2;
             }
@@ -170,7 +181,7 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
         if(!currentGroup.isEmpty()) {
             AbstractDungeon.getCurrRoom().cannotLose = true;
         }
-        int rest = 6;
+        int rest = MAX_ENEMIES;
         for(AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
             if(!m.isDeadOrEscaped() && !m.isDead) {
                 rest--;
@@ -178,13 +189,13 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
         }
 
         if(rest > 0) {
-            int num = AbstractDungeon.merchantRng.random(1, Math.min(3, rest));
+            int num = AbstractDungeon.merchantRng.random(1, Math.min(MAX_WAVE_NUM, rest));
             for (int i = 0; i < num; i++) {
                 if(!currentGroup.isEmpty()) {
                     AbstractMonster m = allMonsters.get(currentGroup.get(0)).getClass().newInstance();
-                    GeneralHelper.addToBot(new SpawnMonsterAction(m, true));
+                    spawnMonster(m);
                     if(m instanceof AbstractEnemy) {
-                        ((AbstractEnemy) m).movePosition(m.drawX + MathUtils.random(-400.0F * Settings.scale, 300.0F * Settings.scale), m.drawY + MathUtils.random(-120.0F * Settings.scale, 350.0F * Settings.scale));
+                        ((AbstractEnemy) m).movePosition(m.drawX + MathUtils.random(-400.0F * Settings.scale, 300.0F * Settings.scale), m.drawY + MathUtils.random(-100.0F * Settings.scale, 350.0F * Settings.scale));
                     }
                     m.usePreBattleAction();
                     currentGroup.remove(0);
@@ -199,6 +210,7 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
 
     public static void OnBattleStart() {
         GenerateEnemyGroup();
+        firstDeath = true;
     }
 
     private static void OnTurnStart() throws InstantiationException, IllegalAccessException {
@@ -217,6 +229,33 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
         }
         AbstractDungeon.topLevelEffects.add(new ShowTeamEffect(currentTeam));
         logger.info(TEXT[0] + "," +TEXT[1] + "," + EnemyManager.currentTeam);
+    }
+    
+    private static void spawnMonster(AbstractMonster m) {
+
+        for (AbstractRelic r : AbstractDungeon.player.relics) {
+            r.onSpawnMonster(m);
+        }
+
+        m.init();
+        m.applyPowers();
+        int position = 0;
+        for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+            if (m.drawX > mo.drawX) {
+                ++position;
+            }
+        }
+        AbstractDungeon.getCurrRoom().monsters.addMonster(position, m);
+
+        m.showHealthBar();
+        if(m.type != EnemyType.BOSS)
+            addToBot(new ApplyPowerAction(m, m, new MinionPower(m)));
+        if (ModHelper.isModEnabled("Lethality"))
+            addToBot(new ApplyPowerAction(m, m, new StrengthPower(m, 3), 3));
+
+        if (ModHelper.isModEnabled("Time Dilation"))
+            addToBot(new ApplyPowerAction(m, m, new SlowPower(m, 0)));
+
     }
 
     @Override
@@ -360,17 +399,19 @@ public class EnemyManager implements CustomSavable<String>, ISubscriber {
             if(GeneralHelper.aliveMonstersAmount() == 0) {
                 NextWave();
             }
-            if(_inst.type == EnemyType.BOSS) {
+            if(firstDeath && _inst.type == EnemyType.BOSS && AbstractDungeon.actNum < 4) {
+                GenerateEnemyGroup();
                 for(MonsterStat s : monsterStats) {
                     if(s.value == 99) {
                         AbstractMonster m1 = allMonsters.get(s.id).getClass().newInstance();
-                        GeneralHelper.addToBot(new SpawnMonsterAction(m1, false));
+                        spawnMonster(m1);
                         if(m1 instanceof AbstractEnemy) {
                             ((AbstractEnemy) m1).movePosition(m1.drawX, m1.drawY);
                         }
                         m1.usePreBattleAction();
                     }
                 }
+                firstDeath = false;
             }
         }
     }

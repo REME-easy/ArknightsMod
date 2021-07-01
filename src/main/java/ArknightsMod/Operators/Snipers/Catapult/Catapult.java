@@ -15,12 +15,12 @@ public class Catapult extends AbstractOperator {
     private static final int MAX_HP = 11;
     private static final int ATK = 6;
     private static final int COOLDOWN = 5;
-
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 3;
 
     public Catapult(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
         this.attackToAll = true;
         this.attackEffect = AbstractGameAction.AttackEffect.FIRE;
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);

@@ -19,11 +19,12 @@ public class Istina extends AbstractOperator {
     private static final int MAX_HP = 13;
     private static final int ATK = 5;
     private static final int COOLDOWN = 3;
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 5;
 
     public Istina(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.SUPPORTER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.SUPPORTER, hb_x, hb_y);
         this.attackEffect = AbstractGameAction.AttackEffect.FIRE;
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());

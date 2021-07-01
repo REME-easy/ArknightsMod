@@ -47,6 +47,7 @@ public class BuringPower extends AbstractPower {
         } else {
             this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
         }
+        updateDescription();
     }
 
     static {

@@ -10,6 +10,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -22,6 +24,8 @@ import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -50,14 +54,6 @@ public class OperatorGroup {
     public OperatorGroup(){
         this.hoveredOperator = null;
     }
-
-//    public void addOperator(int newIndex, AbstractOperator o) {
-//        if (newIndex < 0) {
-//            newIndex = 0;
-//        }
-//
-//        this.operators.add(newIndex, o);
-//    }
 
     public static void showHitboxes() {
         hitboxes.clear();
@@ -134,21 +130,6 @@ public class OperatorGroup {
         }
     }
 
-//    public boolean areAllDead(){
-//        Iterator var1 = this.operators.iterator();
-//
-//        AbstractOperator m;
-//        do {
-//            if (!var1.hasNext()) {
-//                return true;
-//            }
-//
-//            m = (AbstractOperator) var1.next();
-//        } while(m.isDead);
-//
-//        return false;
-//    }
-
     public static AbstractOperator GetOperatorByID(String id){
         Iterator var2 = GetOperators().iterator();
 
@@ -163,13 +144,6 @@ public class OperatorGroup {
 
         return o;
     }
-
-//    public AbstractOperator getRandomOperator(){
-//        if(operators.size() > 0){
-//            return operators.get(AbstractDungeon.cardRandomRng.random(0, operators.size() - 1));
-//        }
-//        return null;
-//    }
 
     public void update() {
         boolean tmp = AbstractDungeon.player.hoveredCard == null;
@@ -248,6 +222,20 @@ public class OperatorGroup {
         for (AbstractOperator m : this.operators) {
             m.render(sb);
         }
+
+        if(CardCrawlGame.isInARun() && AbstractDungeon.player.currentBlock > 0) {
+            AbstractPlayer p = AbstractDungeon.player;
+            float x = p.hb.cX - p.hb.width / 2.0F;
+            float y = p.hb.cY - p.hb.height / 2.0F;
+            try {
+                Method renderBlockIconAndValue = AbstractCreature.class.getDeclaredMethod("renderBlockIconAndValue", SpriteBatch.class, float.class, float.class);
+                renderBlockIconAndValue.setAccessible(true);
+                renderBlockIconAndValue.invoke(AbstractDungeon.player, sb, x, y);
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     public void renderReticle(SpriteBatch sb) {
@@ -274,45 +262,40 @@ public class OperatorGroup {
     }
 
     @SpirePatch(
-            clz = AbstractPlayer.class,
+            clz = AbstractRoom.class,
             method = "update"
     )
     public static class OperatorUpdatePatch{
         public OperatorUpdatePatch(){}
 
-        public static void Postfix(AbstractPlayer _inst){
-            (OperatorsFields.operators.get(_inst)).update();
-            (OperatorsFields.operators.get(_inst)).updateAnimations();
+        public static void Postfix(AbstractRoom _inst){
+            AbstractPlayer p = AbstractDungeon.player;
+            if(p != null) {
+                (OperatorsFields.operators.get(p)).update();
+                (OperatorsFields.operators.get(p)).updateAnimations();
+            }
         }
     }
+
+
 
     @SpirePatch(
-            clz = AbstractPlayer.class,
-            method = "render"
+            clz = AbstractRoom.class,
+            method = "render",
+            paramtypez = {SpriteBatch.class}
     )
-    public static class OperatorRenderFrontPatch{
-        public OperatorRenderFrontPatch(){}
+    public static class OperatorRenderPatch {
+        public OperatorRenderPatch() {}
 
-        public static void Postfix(AbstractPlayer _inst, SpriteBatch sb){
-            OperatorsFields.operators.get(_inst).render(sb);
+        @SpireInsertPatch(
+                rloc = 13
+        )
+        public static void Insert(AbstractRoom _inst, SpriteBatch sb) {
+            AbstractPlayer p = AbstractDungeon.player;
+            if(p != null)
+                OperatorsFields.operators.get(p).render(sb);
         }
     }
-
-//    @SpirePatch(
-//            clz = AbstractRoom.class,
-//            method = "render",
-//            paramtypez = {SpriteBatch.class}
-//    )
-//    public static class OperatorRenderPatch {
-//        public OperatorRenderPatch() {}
-//
-//        @SpireInsertPatch(
-//                rloc = 13
-//        )
-//        public static void Insert(AbstractRoom _inst, SpriteBatch sb) {
-//            OperatorsFields.operators.get(AbstractDungeon.player).render(sb);
-//        }
-//    }
 
     @SpirePatch(
             clz = AbstractPlayer.class,

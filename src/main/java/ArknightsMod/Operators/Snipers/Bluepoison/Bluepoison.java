@@ -18,12 +18,12 @@ public class Bluepoison extends AbstractOperator {
     private static final int MAX_HP = 12;
     private static final int ATK = 5;
     private static final int COOLDOWN = 2;
-
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 5;
 
     public Bluepoison(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -43,7 +43,7 @@ public class Bluepoison extends AbstractOperator {
     @Override
     public void UseWhenSummoned() {
         super.UseWhenSummoned();
-        this.addToBot(new ApplyPowerAction(this, this, new EnvenomPower(this, 2)));
+        this.addToBot(new ApplyPowerAction(this, this, new EnvenomPower(this, 1)));
     }
 
     @Override

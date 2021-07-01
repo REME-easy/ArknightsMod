@@ -20,12 +20,12 @@ public class Angel extends AbstractOperator {
     private static final int MAX_HP = 18;
     private static final int ATK = 6;
     private static final int COOLDOWN = 2;
-
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 6;
 
     public Angel(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -42,7 +42,7 @@ public class Angel extends AbstractOperator {
         super.UseWhenSummoned();
         this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1)));
         this.addToBot(new GainBlockAction(AbstractDungeon.player, 5));
-        this.addToBot(new PlzWaitAction(1.0F));
+        this.addToBot(new PlzWaitAction(0.25F));
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {

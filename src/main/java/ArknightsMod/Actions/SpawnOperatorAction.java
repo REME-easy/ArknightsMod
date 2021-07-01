@@ -8,6 +8,7 @@ import ArknightsMod.Screens.TargetArrowScreen;
 import ArknightsMod.Utils.OperatorPosition;
 import ArknightsMod.Utils.TargetArrow;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -109,6 +110,10 @@ public class SpawnOperatorAction extends AbstractGameAction implements TargetArr
         this.operator.skillBarUpdatedEvent();
         this.operator.healthBarUpdatedEvent();
         this.operator.UseWhenSummoned();
+        for(AbstractCard c : AbstractDungeon.player.masterDeck.group) {
+            if(c instanceof AbstractOperatorCard)
+                ((AbstractOperatorCard) c).onSpawnOperatorInDeck(this.operator);
+        }
         logger.info("召唤了" + this.operator.name);
         TargetArrowScreen.Inst.close();
         OperatorGroup.hideHitboxes();

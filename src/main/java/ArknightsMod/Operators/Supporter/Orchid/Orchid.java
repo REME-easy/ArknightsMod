@@ -18,12 +18,12 @@ public class Orchid extends AbstractOperator {
     private static final int MAX_HP = 9;
     private static final int ATK = 4;
     private static final int COOLDOWN = 3;
-
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 3;
 
     public Orchid(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.SUPPORTER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.SUPPORTER, hb_x, hb_y);
         this.attackEffect = AbstractGameAction.AttackEffect.FIRE;
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -50,7 +50,7 @@ public class Orchid extends AbstractOperator {
     @Override
     public void UseWhenSummoned() {
         super.UseWhenSummoned();
-        this.addToBot(new PlzWaitAction(1.0F));
+        this.addToBot(new PlzWaitAction(0.25F));
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {

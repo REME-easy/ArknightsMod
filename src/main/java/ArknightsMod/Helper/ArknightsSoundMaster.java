@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import java.util.HashMap;
 
 public class ArknightsSoundMaster {
-    public static HashMap<String, Sfx> map = new HashMap<>();
+    private static HashMap<String, Sfx> map = new HashMap<>();
 
     @SpirePatch(
             cls = "com.megacrit.cardcrawl.audio.SoundMaster",
@@ -111,6 +111,19 @@ public class ArknightsSoundMaster {
             map.put("vigna_skill", load("Vigna/vigna_skill.ogg"));
             map.put("castle3_start", load("Castle3/castle3_start.ogg"));
             map.put("lancet2_start", load("Lancet2/lancet2_start.ogg"));
+            map.put("istina_start", load("Istina/istina_start.ogg"));
+            map.put("istina_skill", load("Istina/istina_skill.ogg"));
+            map.put("zima_start", load("Zima/zima_start.ogg"));
+            map.put("zima_skill", load("Zima/zima_skill.ogg"));
+            map.put("cuora_start", load("Cuora/cuora_start.ogg"));
+            map.put("cuora_skill", load("Cuora/cuora_skill.ogg"));
+            map.put("firewatch_start", load("Firewatch/firewatch_start.ogg"));
+            map.put("firewatch_skill_1", load("Firewatch/firewatch_skill_1.ogg"));
+            map.put("firewatch_skill_2", load("Firewatch/firewatch_skill_2.ogg"));
+            map.put("sora_start", load("Sora/sora_start.ogg"));
+            map.put("sora_skill", load("Sora/sora_skill.ogg"));
+            map.put("skadi_start", load("Skadi/skadi_start.ogg"));
+            map.put("skadi_skill", load("Skadi/skadi_skill.ogg"));
 
             map.put("svash_3", load("Svash/svash_3.ogg"));
             map.put("red_2", load("Red/red_2.ogg"));
@@ -132,7 +145,7 @@ public class ArknightsSoundMaster {
             paramtypes = {"java.lang.String", "float"}
     )
     public static class SoundMasterplayAPatch {
-        public static HashMap<String, Sfx> map = new HashMap<>();
+        static HashMap<String, Sfx> map = new HashMap<>();
 
         public SoundMasterplayAPatch() {
         }

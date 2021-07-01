@@ -76,11 +76,15 @@ public class GeneralHelper {
 
     public static AbstractMonster getRandomMonsterSafe(){
         ArrayList<AbstractMonster> monsters = new ArrayList<>();
-        for(AbstractMonster m:AbstractDungeon.getMonsters().monsters){
-            if(m != null && !m.isDeadOrEscaped() && !m.isDead){
-                monsters.add(m);
+        if(AbstractDungeon.getMonsters() != null) {
+            for(AbstractMonster m:AbstractDungeon.getMonsters().monsters){
+                if(m != null && !m.isDeadOrEscaped() && !m.isDead){
+                    monsters.add(m);
+                }
             }
-        }
+        }else
+            return null;
+
         //logger.info(monsters.toString());
         if(monsters.size() == 0){
             return null;

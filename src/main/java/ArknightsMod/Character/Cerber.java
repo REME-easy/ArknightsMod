@@ -25,43 +25,15 @@ import static ArknightsMod.Patches.PlayerClassEnum.ARKNIGHTS_CERBER;
 
 
 public class Cerber extends CustomPlayer {
-    private static final int ENERGY_PER_TURN = 3; // how much energy you get every turn
-    private static final String MY_CHARACTER_SHOULDER_2 = "ArkImg/char/shoulder2.png"; // campfire pose
-    private static final String MY_CHARACTER_SHOULDER_1 = "ArkImg/char/shoulder.png"; // another campfire pose
-    private static final String MY_CHARACTER_CORPSE = "ArkImg/char/corpse.png"; // dead corpse
+    private static final int ENERGY_PER_TURN = 3;
+    private static final String MY_CHARACTER_SHOULDER_2 = "ArkImg/char/shoulder2.png";
+    private static final String MY_CHARACTER_SHOULDER_1 = "ArkImg/char/shoulder.png";
+    private static final String MY_CHARACTER_CORPSE = "ArkImg/char/corpse.png";
     private static final float[] LAYER_SPEED = new float[]{-40.0F, -32.0F, 20.0F, -20.0F, 0.0F, -10.0F, -8.0F, 5.0F, -5.0F, 0.0F};
     private static final String[] ORB_TEXTURES = new String[]{"ArkImg/UI/orb/layer5.png", "ArkImg/UI/orb/layer4.png", "ArkImg/UI/orb/layer3.png", "ArkImg/UI/orb/layer2.png", "ArkImg/UI/orb/layer1.png", "ArkImg/UI/orb/layer6.png", "ArkImg/UI/orb/layer5d.png", "ArkImg/UI/orb/layer4d.png", "ArkImg/UI/orb/layer3d.png", "ArkImg/UI/orb/layer2d.png", "ArkImg/UI/orb/layer1d.png"};
-    private static final String atlasURL = "ArkImg/char/Cerber_Front.atlas";
-    private static final String JsonURL = "ArkImg/char/Cerber_Front.json";
+    private static final String atlasURL = "ArkImg/char/cerber.atlas";
+    private static final String JsonURL = "ArkImg/char/cerber.json";
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("Cerber");
-
-    public Cerber(String name) {
-        super(name, ARKNIGHTS_CERBER, ORB_TEXTURES, "ArkImg/UI/orb/vfx.png", LAYER_SPEED, null, null);
-
-        this.dialogX = (this.drawX + 0.0F * Settings.scale);
-        this.dialogY = (this.drawY + 220.0F * Settings.scale);
-
-        this.initializeClass(null, MY_CHARACTER_SHOULDER_2, // required call to load textures and setup energy loadout
-                MY_CHARACTER_SHOULDER_1,
-                MY_CHARACTER_CORPSE,
-                this.getLoadout(), 0.0F, 0.0F, 200.0F, 220.0F, new EnergyManager(ENERGY_PER_TURN));
-        this.loadAnimation(atlasURL, JsonURL, 1.1F);
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "Skill_2_Idle", true);
-        e.setTime(e.getEndTime() * MathUtils.random());
-        this.state.setTimeScale(0.8F);
-    }
-
-    public ArrayList<String> getStartingDeck() { // starting deck 'nuff said
-        ArrayList<String> retVal = new ArrayList<>();
-        retVal.add("Defend_B");
-        return retVal;
-    }
-
-    public ArrayList<String> getStartingRelics() { // starting ArknightsMod.Core.Arknights.relics - also simple
-        ArrayList<String> retVal = new ArrayList<>();
-        retVal.add("Art of War");
-        return retVal;
-    }
 
     private static final int STARTING_HP = 70;
     private static final int MAX_HP = 70;
@@ -69,7 +41,46 @@ public class Cerber extends CustomPlayer {
     private static final int ORB_SLOTS = 0;
     private static final int HAND_SIZE = 5;
 
-    public CharSelectInfo getLoadout() { // the rest of the character loadout so includes your character select screen info plus hp and starting gold
+    /*TODO
+    *   行囊流
+    *   源石技艺流
+    *   火刀流
+    *   -
+    *   关键词：
+    *   行囊 储存卡牌的卡牌。
+    *   法术 打出后保存，回合结束时合成一样法术
+    *   源石技艺 往法术中添加一些效果
+    *
+    * */
+
+    public Cerber(String name) {
+        super(name, ARKNIGHTS_CERBER, ORB_TEXTURES, "ArkImg/UI/orb/vfx.png", LAYER_SPEED, null, null);
+
+        this.dialogX = (this.drawX + 100.0F * Settings.scale);
+        this.dialogY = (this.drawY + 150.0F * Settings.scale);
+
+        this.initializeClass(null, MY_CHARACTER_SHOULDER_2,
+                MY_CHARACTER_SHOULDER_1,
+                MY_CHARACTER_CORPSE,
+                this.getLoadout(), 0.0F, 0.0F, 150.0F, 150.0F, new EnergyManager(ENERGY_PER_TURN));
+        this.loadAnimation(atlasURL, JsonURL, 2.0F);
+        AnimationState.TrackEntry e = this.state.setAnimation(0, "Idle", true);
+        e.setTime(e.getEndTime() * MathUtils.random());
+    }
+
+    public ArrayList<String> getStartingDeck() {
+        ArrayList<String> retVal = new ArrayList<>();
+        retVal.add("Defend_B");
+        return retVal;
+    }
+
+    public ArrayList<String> getStartingRelics() {
+        ArrayList<String> retVal = new ArrayList<>();
+        retVal.add("Art of War");
+        return retVal;
+    }
+
+    public CharSelectInfo getLoadout() {
         return new CharSelectInfo(characterStrings.NAMES[0], characterStrings.TEXT[0],
                 STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, HAND_SIZE,
                 this, this.getStartingRelics(), this.getStartingDeck(), false);

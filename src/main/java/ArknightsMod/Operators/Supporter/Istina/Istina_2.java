@@ -22,6 +22,7 @@ public class Istina_2 extends AbstractSkill {
     public void ActiveEffect() {
         CardCrawlGame.sound.play("atkboost");
         this.owner.attackTargets += 2;
+        owner.canPlayAttack = false;
         owner.state.setAnimation(0, "Skill_Start", false);
         owner.playIdleAnim();
     }
@@ -30,6 +31,7 @@ public class Istina_2 extends AbstractSkill {
     public void EndEffect() {
         this.owner.changeMaxAttackCoolDown(1);
         this.owner.attackTargets -= 2;
+        owner.canPlayAttack = true;
         owner.state.setAnimation(0, "Skill_End", false);
         owner.playIdleAnim();
     }

@@ -85,6 +85,7 @@ public class Crowns extends AbstractEnemy {
     public void addAttackCoolDown(int num) {
         super.addAttackCoolDown(num);
         this.damage.get(0).base += num;
+        this.applyPowers();
     }
 
     @Override
@@ -95,6 +96,13 @@ public class Crowns extends AbstractEnemy {
     @Override
     protected void specialTakeTurn() {
 
+    }
+
+    public void die() {
+        this.useFastShakeAnimation(3.0F);
+        CardCrawlGame.screenShake.rumble(2.0F);
+        super.die();
+        this.onBossVictoryLogic();
     }
 
     @Override

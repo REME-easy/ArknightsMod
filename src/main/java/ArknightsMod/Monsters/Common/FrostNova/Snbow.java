@@ -36,9 +36,9 @@ public class Snbow extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
-            this.specialDamage.add(new DamageInfo(this, 4));
+            this.specialDamage.add(new DamageInfo(this, 7));
         } else {
-            this.specialDamage.add(new DamageInfo(this, 3));
+            this.specialDamage.add(new DamageInfo(this, 6));
         }
     }
 

@@ -18,12 +18,12 @@ public class Rangers extends AbstractOperator {
     private static final int MAX_HP = 8;
     private static final int ATK = 3;
     private static final int COOLDOWN = 2;
-
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 2;
     private static final int LEVEL = 2;
 
     public Rangers(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.SNIPER, hb_x, hb_y);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());

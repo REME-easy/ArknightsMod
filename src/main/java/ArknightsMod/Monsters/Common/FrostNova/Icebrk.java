@@ -22,8 +22,8 @@ public class Icebrk extends AbstractEnemy {
     private static final String[] TIPS = monsterStrings.DIALOG;
     private static final String ATLAS = "Enemies/" + DIR + "/" + DIR + ".atlas";
     private static final String JSON = "Enemies/" + DIR + "/" + DIR + ".json";
-    private static final int MAX_HP = 60;
-    private static final int CD = 3;
+    private static final int MAX_HP = 55;
+    private static final int CD = 4;
     private static final float SIZE = 2.0F;
     private static final float HB_W = 125.0F;
     private static final float HB_H = 140.0F;
@@ -42,11 +42,11 @@ public class Icebrk extends AbstractEnemy {
         }
 
         if (AbstractDungeon.ascensionLevel >= 2) {
+            this.damage.add(new DamageInfo(this, 9));
+            this.specialDamage.add(new DamageInfo(this, 4));
+        } else {
             this.damage.add(new DamageInfo(this, 8));
             this.specialDamage.add(new DamageInfo(this, 3));
-        } else {
-            this.damage.add(new DamageInfo(this, 7));
-            this.specialDamage.add(new DamageInfo(this, 2));
         }
         this.enemyTags.add(EnemyTag.YETI);
         this.extraTip.header = TIPS[0];

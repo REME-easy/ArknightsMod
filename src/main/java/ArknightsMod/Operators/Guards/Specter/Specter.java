@@ -17,11 +17,12 @@ public class Specter extends AbstractOperator {
     private static final int MAX_HP = 26;
     private static final int ATK = 7;
     private static final int COOLDOWN = 3;
+    private static final int DEF = 3;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 5;
 
     public Specter(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.GUARD, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.GUARD, hb_x, hb_y);
         this.attackTargets = 2;
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());

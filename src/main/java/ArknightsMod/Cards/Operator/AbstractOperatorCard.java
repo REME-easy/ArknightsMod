@@ -36,6 +36,7 @@ public class AbstractOperatorCard extends AbstractArkCard implements CustomSavab
     private int maxHealth;
     private int atk;
     private int atkSpeed;
+    private int def;
     private int resummonTime;
     public AbstractOperator.OperatorType operatorType;
 
@@ -76,6 +77,7 @@ public class AbstractOperatorCard extends AbstractArkCard implements CustomSavab
         maxHealth = operator.maxHealth;
         atk = operator.Atk;
         atkSpeed = operator.attackCoolDown;
+        def = operator.def;
         resummonTime = operator.resummonTime;
         operatorType = operator.operatorType;
     }
@@ -112,6 +114,14 @@ public class AbstractOperatorCard extends AbstractArkCard implements CustomSavab
             s.init();
         }
     }
+
+    public void onBattleStartPostDrawInDeck() {
+
+    }
+
+    public void onSpawnOperatorInDeck(AbstractOperator o) {}
+
+    public void onSpawnOperatorCardInDeck(AbstractCard card) {}
 
     @Override
     public AbstractCard makeCopy() {
@@ -180,16 +190,23 @@ public class AbstractOperatorCard extends AbstractArkCard implements CustomSavab
         FontHelper.renderRotatedText(sb, FontHelper.blockInfoFont, Integer.toString(maxHealth), this.current_x, this.current_y, offsetX * tmp, (97 + offsetY) * tmp, this.angle, false, Color.WHITE);
         FontHelper.renderRotatedText(sb, FontHelper.blockInfoFont, Integer.toString(atk), this.current_x, this.current_y, offsetX * tmp, (69 + offsetY) * tmp, this.angle, false, Color.WHITE);
         FontHelper.renderRotatedText(sb, FontHelper.blockInfoFont, Integer.toString(atkSpeed), this.current_x, this.current_y, offsetX * tmp, (41 + offsetY) * tmp, this.angle, false, Color.WHITE);
-        FontHelper.renderRotatedText(sb, FontHelper.blockInfoFont, Integer.toString(resummonTime), this.current_x, this.current_y, offsetX * tmp, (13 + offsetY) * tmp, this.angle, false, Color.WHITE);
+        FontHelper.renderRotatedText(sb, FontHelper.blockInfoFont, Integer.toString(def), this.current_x, this.current_y, offsetX * tmp, (13 + offsetY) * tmp, this.angle, false, Color.WHITE);
+        FontHelper.renderRotatedText(sb, FontHelper.blockInfoFont, Integer.toString(resummonTime), this.current_x, this.current_y, offsetX * tmp, (-15 + offsetY) * tmp, this.angle, false, Color.WHITE);
     }
 
-//    private void renderStar(SpriteBatch sb){
-////        renderHelper(sb, levelImgs[this.level - 1], this.current_x + 300.0F * Settings.scale * this.drawScale, this.current_y);
-//    }
-//
-//    private void renderType(SpriteBatch sb){
-//        //renderHelper(sb, typeImgs.get(this.operatorType), 115.0F * Settings.scale, 175.0F * Settings.scale, 1.0F);
-//    }
+    protected void render(SpriteBatch sb, boolean selected, boolean renderStat) {
+        if(renderStat) render(sb, selected);
+        else {
+            super.render(sb, selected);
+            sb.setColor(Color.WHITE);
+            if(currentSkill != null){
+                renderSkill(sb, currentSkill.getTexture());
+            }
+
+            renderHelper(sb, levelImgs[this.level - 1], 1.0F * Settings.scale);
+            renderHelper(sb, typeImgs.get(this.operatorType));
+        }
+    }
 
     private void renderHelper(SpriteBatch sb, AtlasRegion img) {
         sb.draw(img, this.current_x + img.offsetX - (float)img.originalWidth / 2.0F, this.current_y + img.offsetY - (float)img.originalHeight / 2.0F, (float)img.originalWidth / 2.0F - img.offsetX, (float)img.originalHeight / 2.0F - img.offsetY, (float)img.packedWidth, (float)img.packedHeight, this.drawScale * Settings.scale, this.drawScale * Settings.scale, this.angle);

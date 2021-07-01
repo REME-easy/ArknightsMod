@@ -18,11 +18,12 @@ public class Hibisc extends AbstractOperator {
     private static final int MAX_HP = 12;
     private static final int ATK = 4;
     private static final int COOLDOWN = 3;
+    private static final int DEF = 1;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 3;
 
     public Hibisc(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.MEDIC, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.MEDIC, hb_x, hb_y);
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());
         this.state.addAnimation(0, "Idle", true, 0.0F);

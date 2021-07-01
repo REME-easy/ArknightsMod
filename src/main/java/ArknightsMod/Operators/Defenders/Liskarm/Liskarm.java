@@ -5,11 +5,9 @@ import ArknightsMod.Cards.Operator.AbstractOperatorCard;
 import ArknightsMod.Cards.Operator.Defenders.LiskarmCard;
 import ArknightsMod.Helper.GeneralHelper;
 import ArknightsMod.Operators.AbstractOperator;
-import ArknightsMod.Powers.Operator.SolidnessPower;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
@@ -22,11 +20,12 @@ public class Liskarm extends AbstractOperator {
     private static final int MAX_HP = 32;
     private static final int ATK = 4;
     private static final int COOLDOWN = 3;
+    private static final int DEF = 5;
     private static final int RESUMMON_TIME = 3;
     private static final int LEVEL = 5;
 
     public Liskarm(float hb_x, float hb_y){
-        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, RESUMMON_TIME, LEVEL, OperatorType.DEFENDER, hb_x, hb_y);
+        super(ID, ATLAS, JSON, ATK, COOLDOWN, MAX_HP, DEF, RESUMMON_TIME, LEVEL, OperatorType.DEFENDER, hb_x, hb_y);
 
         AnimationState.TrackEntry e = this.state.setAnimation(0, "Start", false);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -36,12 +35,6 @@ public class Liskarm extends AbstractOperator {
 
     public Liskarm(){
         this(0.0F, 0.0F);
-    }
-
-    @Override
-    public void UseWhenSummoned() {
-        super.UseWhenSummoned();
-        this.addToBot(new ApplyPowerAction(this, this, new SolidnessPower(this, 2), 2));
     }
 
     @Override
